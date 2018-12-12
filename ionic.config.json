@@ -1,0 +1,8 @@
+{
+  "name": "Election2018B",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "e1454558"
+}
