@@ -9,13 +9,17 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CaretakerPage } from '../pages/caretaker/caretaker';
+import { DlgEditScorePage } from '../pages/dlg-edit-score/dlg-edit-score';
+import { DlgFormatCalculatePage } from '../pages/dlg-format-calculate/dlg-format-calculate';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    CaretakerPage
+    CaretakerPage,
+    DlgEditScorePage,
+    DlgFormatCalculatePage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import { CaretakerPage } from '../pages/caretaker/caretaker';
     MyApp,
     HomePage,
     ListPage,
-    CaretakerPage
+    CaretakerPage,
+    DlgEditScorePage,
+    DlgFormatCalculatePage
   ],
   providers: [
     StatusBar,

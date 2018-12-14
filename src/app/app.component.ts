@@ -6,6 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { CaretakerPage } from '../pages/caretaker/caretaker';
+import { DlgEditScorePage } from '../pages/dlg-edit-score/dlg-edit-score';
+import { DlgFormatCalculatePage } from '../pages/dlg-format-calculate/dlg-format-calculate';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,7 +26,9 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Caretaker', component: CaretakerPage }
+      { title: 'Caretaker', component: CaretakerPage },
+      { title: 'Dlg-edit-score', component: DlgEditScorePage },
+      { title: 'Dlg-format-calculate', component: DlgFormatCalculatePage }
     ];
 
   }
