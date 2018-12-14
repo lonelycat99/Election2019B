@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the CaretakerPage page.
+ * Generated class for the CalculatePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,20 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-caretaker',
-  templateUrl: 'caretaker.html',
-  
+  selector: 'page-calculate',
+  templateUrl: 'calculate.html',
 })
-export class CaretakerPage {
-  pet: string;
+export class CalculatePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.pet = "t1";
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CaretakerPage');
+    console.log('ionViewDidLoad CalculatePage');
   }
-  
 
 }
