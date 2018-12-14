@@ -6,10 +6,10 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  pet: string;
+  election: string;
  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.pet = "t1";
+    this.election = "totalScore";
   }
 
   ionViewDidLoad() {
