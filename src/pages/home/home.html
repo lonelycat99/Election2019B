@@ -18,25 +18,25 @@
 
 <ion-content padding>
   <div padding>
-    <ion-segment [(ngModel)]="pet">
-      <ion-segment-button value="t1">
+    <ion-segment [(ngModel)]="election">
+      <ion-segment-button value="totalScore">
         ผลคะแนนรวม
       </ion-segment-button>
-      <ion-segment-button value="t2">
+      <ion-segment-button value="data">
         ฐานข้อมูล
       </ion-segment-button>
-      <ion-segment-button value="t3">
+      <ion-segment-button value="format-cal">
         ตั้งค่าคำนวณ
       </ion-segment-button>
-      <ion-segment-button value="t4">
+      <ion-segment-button value="setting">
         ตั้งค่าทั่วไป
       </ion-segment-button>
     </ion-segment>
   </div>
 
-  <div [ngSwitch]="pet">
+  <div [ngSwitch]="election">
 
-    <div *ngSwitchCase="'t1'">
+    <div *ngSwitchCase="'totalScore'">
       <ion-row>
         <ion-col col-6>
           <h3>คะแนนคาดการณ์</h3>
@@ -50,76 +50,76 @@
         <ion-col col-3>
           <ion-item>
             <ion-label>เพื่อไทย</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>ประชาธิปัตย์</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>อนาคตใหม่</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>พลังประชารัฐ</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
         </ion-col>
 
         <ion-col col-3>
           <ion-item>
             <ion-label>พลังชาติไทย</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>ภูมิใจไทย</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>ทางเลือใหม่</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>ประชานิยม</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
         </ion-col>
 
         <ion-col col-3>
           <ion-item>
             <ion-label>ประชาภิวัฒน์</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>พลังชาติไทย</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>พลังพลเมืองไทย</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>มติประชา</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
         </ion-col>
 
         <ion-col col-3>
           <ion-item>
             <ion-label>ประชาชนปฏิรูป</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>ไทยธรรม</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>สามัญชน</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
           <ion-item>
             <ion-label>อื่นๆ</ion-label>
-            <ion-checkbox color="danger" checked="true"></ion-checkbox>
+            <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -218,7 +218,7 @@
       </div>
     </div>
 
-    <ion-list *ngSwitchCase="'t2'">
+    <ion-list *ngSwitchCase="'data'">
       <ion-row>
         <ion-col col-2 text-right>
           <ion-label> เขตการเลือกตั้ง </ion-label>
@@ -278,7 +278,7 @@
       </ion-card>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'t3'">
+    <ion-list *ngSwitchCase="'format-cal'">
       <h3>รูปแบบการคำนวณ</h3>
 
       <ion-list>
