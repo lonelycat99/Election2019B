@@ -17,6 +17,7 @@
 
 
 <ion-content padding>
+
   <div padding>
     <ion-segment [(ngModel)]="election">
       <ion-segment-button value="totalScore">
@@ -37,16 +38,137 @@
   <div [ngSwitch]="election">
 
     <div *ngSwitchCase="'totalScore'">
-      <ion-row class="backgroundNav">
-        <ion-col col-10 class="backgroundNav">
+
+      <ion-row padding class="backgroundNav">
+        <ion-col padding col-11 class="backgroundNav">
           <ion-label class="text">คะแนนคาดการณ์</ion-label>
         </ion-col>
-        <ion-col col-2 class="backgroundNav" text-center>
+        <ion-col padding col-1 class="backgroundNav" text-center>
           <button ion-button color="light">ส่งผลประเมิน</button>
         </ion-col>
       </ion-row>
 
-      <ion-row class="background">
+      <ion-row padding class="background">
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>เพื่อไทย</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>พลังชาติไทย</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>ประชาภิวัฒน์</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>ประชาชนปฏิรูป</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row padding class="background">
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>ประชาธิปัตย์</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>ภูมิใจไทย</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>พลังชาติไทย</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>ไทยธรรม</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row padding class="background">
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>อนาคตใหม่</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>ทางเลือกใหม่</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>พลังพลเพื่อไทย</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>สามัญชน</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row padding class="background">
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>พลังประชารัฐ</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>ประชานิยม</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>มติประชา</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>อื่นๆ</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <!-- <ion-row class="background">
         <ion-col col-3 class="background">
           <ion-item class="background" no-lines>
             <ion-label>เพื่อไทย</ion-label>
@@ -122,16 +244,15 @@
             <ion-checkbox color="danger" checked="false"></ion-checkbox>
           </ion-item>
         </ion-col>
+      </ion-row> -->
+
+      <ion-row class="lineT">
+
       </ion-row>
 
-      <ion-row text-center class="background">
-        <ion-col col-4 class="background"></ion-col>
-        <ion-col col-4 class="background"> 
+      <ion-row padding text-center class="background">
           <ion-label>การแสดงผลของตาราง</ion-label>
-        </ion-col>
-        <ion-col col-4 class="background"></ion-col>
       </ion-row>
-      <br><br>
 
       <div>
         <ion-row class="bgTabalcol1">
@@ -162,7 +283,7 @@
           <ion-col col-2 class="bgTabalcol2">
             200
           </ion-col>
-          <ion-col col-2 class="bgTabalcol2"> 
+          <ion-col col-2 class="bgTabalcol2">
             60
           </ion-col>
           <ion-col col-3 class="bgTabalcol2">
@@ -249,7 +370,7 @@
         </ion-row>
 
         <ion-row>
-          <ion-col col-4 class="Seg2bg2"> 
+          <ion-col col-4 class="Seg2bg2">
             <ion-label><b>กรุงเทพฯเขต1</b></ion-label>
           </ion-col>
           <ion-col col-4 class="Seg2bg2">
@@ -279,7 +400,7 @@
           <ion-col col-4 class="Seg2bg2">
             <ion-label>เพื่อไทย</ion-label>
           </ion-col>
-          <ion-col col-4 class="Seg2bg2"> 
+          <ion-col col-4 class="Seg2bg2">
             <ion-label>30,002</ion-label>
           </ion-col>
         </ion-row>
