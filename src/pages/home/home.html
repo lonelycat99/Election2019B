@@ -18,7 +18,7 @@
 
 <ion-content padding>
 
-  <div padding>
+  <div>
     <ion-segment [(ngModel)]="election">
       <ion-segment-button value="totalScore">
         ผลคะแนนรวม
@@ -39,134 +39,143 @@
 
     <div *ngSwitchCase="'totalScore'">
 
-      <ion-row padding class="backgroundNav">
-        <ion-col padding col-11 class="backgroundNav">
-          <ion-label class="text">คะแนนคาดการณ์</ion-label>
-        </ion-col>
-        <ion-col padding col-1 class="backgroundNav" text-center>
-          <button ion-button color="light">ส่งผลประเมิน</button>
-        </ion-col>
-      </ion-row>
+      <div margin>
+        <ion-row class="backgroundNav">
+          <ion-col padding col-11 class="backgroundNav">
+            <ion-label class="text">คะแนนคาดการณ์</ion-label>
+          </ion-col>
+          <ion-col padding col-1 class="backgroundNav" text-center>
+            <button ion-button color="light">ส่งผลประเมิน</button>
+          </ion-col>
+        </ion-row>
 
-      <ion-row padding class="background">
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>เพื่อไทย</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
+        <ion-row padding class="background">
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>เพื่อไทย</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
 
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>พลังชาติไทย</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>พลังชาติไทย</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
 
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>ประชาภิวัฒน์</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>ประชาภิวัฒน์</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
 
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>ประชาชนปฏิรูป</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>ประชาชนปฏิรูป</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
 
-      <ion-row padding class="background">
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>ประชาธิปัตย์</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
+        <ion-row padding class="background">
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>ประชาธิปัตย์</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
 
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>ภูมิใจไทย</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>ภูมิใจไทย</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
 
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>พลังชาติไทย</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>พลังชาติไทย</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
 
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>ไทยธรรม</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>ไทยธรรม</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
 
-      <ion-row padding class="background">
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>อนาคตใหม่</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
+        <ion-row padding class="background">
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>อนาคตใหม่</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
 
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>ทางเลือกใหม่</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>ทางเลือกใหม่</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
 
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>พลังพลเพื่อไทย</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>พลังพลเพื่อไทย</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
 
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>สามัญชน</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>สามัญชน</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
 
-      <ion-row padding class="background">
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>พลังประชารัฐ</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
+        <ion-row padding class="background">
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>พลังประชารัฐ</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
 
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>ประชานิยม</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>ประชานิยม</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
 
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>มติประชา</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>มติประชา</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
 
-        <ion-col col-3>
-          <ion-item class="background" no-lines>
-            <ion-label>อื่นๆ</ion-label>
-            <ion-checkbox color="danger"></ion-checkbox>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+          <ion-col col-3>
+            <ion-item class="background" no-lines>
+              <ion-label>อื่นๆ</ion-label>
+              <ion-checkbox color="danger"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="lineT"></ion-row>
+
+        <ion-row padding text-center class="background">
+          <ion-label>การแสดงผลของตาราง</ion-label>
+        </ion-row>
+
+      </div>
 
       <!-- <ion-row class="background">
         <ion-col col-3 class="background">
@@ -245,203 +254,198 @@
           </ion-item>
         </ion-col>
       </ion-row> -->
+      <div margin-top>
 
-      <ion-row class="lineT">
-
-      </ion-row>
-
-      <ion-row padding text-center class="background">
-          <ion-label>การแสดงผลของตาราง</ion-label>
-      </ion-row>
-
-      <div>
         <ion-row class="bgTabalcol1">
-          <ion-col col-3 class="bgTabalcol1">
-            <h3>พรรค</h3>
+          <ion-col col-3>
+            <h3 text-center>พรรค</h3>
           </ion-col>
-          <ion-col col-2 class="bgTabalcol1">
-            <h3>พึงมี</h3>
+          <ion-col col-2>
+            <h3 text-center>พึงมี</h3>
           </ion-col>
-          <ion-col col-2 class="bgTabalcol1">
-            <h3>แบ่งเขต</h3>
+          <ion-col col-2>
+            <h3 text-center>แบ่งเขต</h3>
           </ion-col>
-          <ion-col col-2 class="bgTabalcol1">
-            <h3>สัดส่วน</h3>
+          <ion-col col-2>
+            <h3 text-center>สัดส่วน</h3>
           </ion-col>
-          <ion-col col-3 class="bgTabalcol1">
-            <h3>เปอร์เซ็นต์</h3>
+          <ion-col col-3>
+            <h3 text-center>เปอร์เซ็นต์</h3>
           </ion-col>
         </ion-row>
 
         <ion-row class="bgTabalcol2">
-          <ion-col col-3 class="bgTabalcol2">
+          <ion-col text-center col-3>
             เพื่อไทย
           </ion-col>
-          <ion-col col-2 class="bgTabalcol2">
+          <ion-col text-center col-2>
             260
           </ion-col>
-          <ion-col col-2 class="bgTabalcol2">
+          <ion-col text-center col-2>
             200
           </ion-col>
-          <ion-col col-2 class="bgTabalcol2">
+          <ion-col text-center col-2>
             60
           </ion-col>
-          <ion-col col-3 class="bgTabalcol2">
+          <ion-col text-center col-3>
             54%
           </ion-col>
         </ion-row>
 
         <ion-row class="bgTabalcol3">
-          <ion-col col-3 class="bgTabalcol3">
+          <ion-col text-center col-3>
             ประชาธิปัตย์
           </ion-col>
-          <ion-col col-2 class="bgTabalcol3">
+          <ion-col text-center col-2>
             110
           </ion-col>
-          <ion-col col-2 class="bgTabalcol3">
+          <ion-col text-center col-2>
             90
           </ion-col>
-          <ion-col col-2 class="bgTabalcol3">
+          <ion-col text-center col-2>
             20
           </ion-col>
-          <ion-col col-3 class="bgTabalcol3">
+          <ion-col text-center col-3>
             24%
           </ion-col>
         </ion-row>
 
         <ion-row class="bgTabalcol2">
-          <ion-col col-3 class="bgTabalcol2">
+          <ion-col text-center col-3>
             อนาคตใหม่
           </ion-col>
-          <ion-col col-2 class="bgTabalcol2">
+          <ion-col text-center col-2>
             0
           </ion-col>
-          <ion-col col-2 class="bgTabalcol2">
+          <ion-col text-center col-2>
             35
           </ion-col>
-          <ion-col col-2 class="bgTabalcol2">
+          <ion-col text-center col-2>
             15
           </ion-col>
-          <ion-col col-3 class="bgTabalcol2">
+          <ion-col text-center col-3>
             21%
           </ion-col>
         </ion-row>
 
         <ion-row class="bgTabalcol3">
-          <ion-col col-3 class="bgTabalcol3">
+          <ion-col text-center col-3>
             อื่นๆ
           </ion-col>
-          <ion-col col-2 class="bgTabalcol3">
+          <ion-col text-center col-2>
             5
           </ion-col>
-          <ion-col col-2 class="bgTabalcol3">
+          <ion-col text-center col-2>
             4
           </ion-col>
-          <ion-col col-2 class="bgTabalcol3">
+          <ion-col text-center col-2>
             1
           </ion-col>
-          <ion-col col-3 class="bgTabalcol3">
+          <ion-col text-center col-3>
             1%
           </ion-col>
         </ion-row>
       </div>
     </div>
 
-    <ion-list *ngSwitchCase="'data'">
-      <ion-row class="Seg2bg1">
-        <ion-col col-2 text-right class="text">
+    <div *ngSwitchCase="'data'">
+
+      <ion-row margin class="Seg2bg1">
+
+        <ion-col text-center col-2 class="text">
           <ion-label>เขตการเลือกตั้ง</ion-label>
         </ion-col>
-        <ion-col col-10>
+
+        <ion-col col-10 class="text">
           <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
         </ion-col>
+
       </ion-row>
 
-      <ion-card>
+      <ion-card margin>
+
         <ion-row>
           <ion-col col-4>
           </ion-col>
-          <ion-col col-4>
-            <ion-label>พรรคที่ชนะ</ion-label>
+          <ion-col text-center class="text" col-4>
+            พรรคที่ชนะ
           </ion-col>
-          <ion-col col-4>
-            <ion-label>คะแนนของเพื่อไทย</ion-label>
+          <ion-col text-center class="text" col-4>
+            คะแนนของเพื่อไทย
           </ion-col>
         </ion-row>
 
         <ion-row>
-          <ion-col col-4 class="Seg2bg2">
+          <ion-col text-center col-4 class="Seg2bg2">
             <ion-label><b>กรุงเทพฯเขต1</b></ion-label>
           </ion-col>
-          <ion-col col-4 class="Seg2bg2">
+          <ion-col text-center col-4 class="Seg2bg2">
             <ion-label>เพื่อไทย</ion-label>
           </ion-col>
-          <ion-col col-4 class="Seg2bg2">
+          <ion-col text-center col-4 class="Seg2bg2">
             <ion-label>38,000</ion-label>
           </ion-col>
         </ion-row>
 
         <ion-row>
-          <ion-col col-4 class="Seg2bg3">
+          <ion-col text-center col-4 class="Seg2bg3">
             <ion-label><b>กรุงเทพฯเขต2</b></ion-label>
           </ion-col>
-          <ion-col col-4 class="Seg2bg3">
+          <ion-col text-center col-4 class="Seg2bg3">
             <ion-label>ประชาธิปัตย์</ion-label>
           </ion-col>
-          <ion-col col-4 class="Seg2bg3">
+          <ion-col text-center col-4 class="Seg2bg3">
             <ion-label>25,600</ion-label>
           </ion-col>
         </ion-row>
 
         <ion-row>
-          <ion-col col-4 class="Seg2bg2">
+          <ion-col text-center col-4 class="Seg2bg2">
             <ion-label><b>กาญจนบุรี1</b></ion-label>
           </ion-col>
-          <ion-col col-4 class="Seg2bg2">
+          <ion-col text-center col-4 class="Seg2bg2">
             <ion-label>เพื่อไทย</ion-label>
           </ion-col>
-          <ion-col col-4 class="Seg2bg2">
+          <ion-col text-center col-4 class="Seg2bg2">
             <ion-label>30,002</ion-label>
           </ion-col>
         </ion-row>
       </ion-card>
-    </ion-list>
+    </div>
 
-    <ion-list *ngSwitchCase="'format-cal'">
-      <h3 color="danger">รูปแบบการคำนวณ</h3>
+    <div *ngSwitchCase="'format-cal'">
 
-      <ion-list>
-        <ion-item>
-          <ion-label>กรุงเทพฯเขต1</ion-label>
-          <ion-select [(ngModel)]="gaming">
-            <ion-option value="nes">เขต1 พระนคร</ion-option>
-            <ion-option value="n64">เขต2 บางรัก</ion-option>
-            <ion-option value="ps">เขต3 บางนา</ion-option>
-          </ion-select>
-        </ion-item>
+      <ion-row margin class="background">
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>รูปแบบการตั้งค่าคำนวณ</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-list margin *ngFor="let areas of listArea ; let i = index">
+        <button ion-item (click)="showDetailArea(i)">
+          <ion-row>
+            <ion-col col-11>
+              {{areas.nameArea}}
+            </ion-col>
+            <ion-col col-1>
+              <ion-icon *ngIf="!areas.status" name="ios-arrow-dropright"></ion-icon>
+              <ion-icon *ngIf="areas.status" name="ios-arrow-dropdown"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </button>
+        <ion-list *ngIf="areas.status">
+          <div *ngFor="let subAreas of areas.subArea">
+            <ion-item no-lines>
+              <button ion-item>
+                {{subAreas}}
+              </button>
+            </ion-item>
+          </div>
+        </ion-list>
       </ion-list>
+    </div>
 
-      <ion-list>
-        <ion-item>
-          <ion-label>ขอนแก่นเขต1</ion-label>
-          <ion-select [(ngModel)]="gaming">
-            <ion-option value="nes">เขต1 ท่าพระ</ion-option>
-            <ion-option value="n64">เขต2 โนนม่วง</ion-option>
-            <ion-option value="ps">เขต3 พล</ion-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
-
-      <ion-list>
-        <ion-item>
-          <ion-label>อุบลฯเขต1</ion-label>
-          <ion-select [(ngModel)]="gaming">
-            <ion-option value="nes">เขต1 เมือง</ion-option>
-            <ion-option value="n64">เขต2 วาริน</ion-option>
-            <ion-option value="ps">เขต3 สำโรง</ion-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
-    </ion-list>
   </div>
 </ion-content>
