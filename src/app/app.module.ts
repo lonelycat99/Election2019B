@@ -1,36 +1,44 @@
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { DlgEditScorePage } from '../pages/dlg-edit-score/dlg-edit-score';
-import { DlgFormatCalculatePage } from '../pages/dlg-format-calculate/dlg-format-calculate';
-import { DataPage } from '../pages/data/data';
-import { CalculatePage } from '../pages/calculate/calculate';
+import { DataElectionPage } from '../pages/data-election/data-election';
+import { FormatCalculatePage } from '../pages/format-calculate/format-calculate';
+import { SettingPage } from '../pages/setting/setting';
 
 @NgModule({
   declarations: [
     MyApp,
+    AboutPage,
+    ContactPage,
     HomePage,
-    DlgEditScorePage,
-    DlgFormatCalculatePage,
-    DataPage,
-    CalculatePage
+    TabsPage,
+    DataElectionPage,
+    FormatCalculatePage,
+    SettingPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    AboutPage,
+    ContactPage,
     HomePage,
-    DlgEditScorePage,
-    DlgFormatCalculatePage,
-    DataPage,
-    CalculatePage
+    TabsPage,
+    DataElectionPage,
+    FormatCalculatePage,
+    SettingPage
   ],
   providers: [
     StatusBar,
