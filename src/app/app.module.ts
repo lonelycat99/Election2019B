@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { DataElectionPage } from '../pages/data-election/data-election';
 import { FormatCalculatePage } from '../pages/format-calculate/format-calculate';
 import { SettingPage } from '../pages/setting/setting';
+import { FormatCalculateDetailPage } from '../pages/format-calculate-detail/format-calculate-detail';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SettingPage } from '../pages/setting/setting';
     TabsPage,
     DataElectionPage,
     FormatCalculatePage,
-    SettingPage
+    SettingPage,
+    FormatCalculateDetailPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { SettingPage } from '../pages/setting/setting';
     TabsPage,
     DataElectionPage,
     FormatCalculatePage,
-    SettingPage
+    SettingPage, 
+    FormatCalculateDetailPage
   ],
   providers: [
     StatusBar,

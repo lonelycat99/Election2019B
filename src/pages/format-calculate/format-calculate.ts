@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { testArea } from '../../app/model';
+import { FormatCalculateDetailPage } from '../format-calculate-detail/format-calculate-detail';
 
 /**
  * Generated class for the FormatCalculatePage page.
@@ -15,7 +16,7 @@ import { testArea } from '../../app/model';
   templateUrl: 'format-calculate.html',
 })
 export class FormatCalculatePage {
- 
+
   listArea: testArea[];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.listArea = [
@@ -74,6 +75,10 @@ export class FormatCalculatePage {
     else {
       this.listArea[index].status = false;
     }
+  }
+
+  GoCalculate() {
+    this.navCtrl.push(FormatCalculateDetailPage)
   }
 
 }
