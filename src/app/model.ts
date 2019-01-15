@@ -28,6 +28,16 @@ export class LocationModel {
     note: string;
 }
 
+export class LocationCodeModel {
+    id: string;
+    nameArea: string;
+    idArea: string;
+    partyListName: string;
+    numberRegister: string;
+    nameRegister: string;
+    hasRegister: string;
+}
+
 export class GlobalVaraible {
     static host: string = "http://electionvars.azurewebsites.net/api/Election/";
 }
