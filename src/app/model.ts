@@ -17,6 +17,17 @@ export class testArea {
     status: boolean
 }
 
+export class LocationModel {
+    id: string;
+    idProvince: string;
+    locationCode: string;
+    province: string;
+    district: string;
+    subDistrict: string;
+    zipCode: string;
+    note: string;
+}
+
 export class GlobalVaraible {
     static host: string = "http://electionvars.azurewebsites.net/api/Election/";
 }
