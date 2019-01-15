@@ -26,23 +26,23 @@
     </ion-col>
   </ion-row>
 
-  <ion-list margin *ngFor="let areas of listArea ; let i = index">
-    <button ion-item (click)="showDetailArea(i)">
+  <ion-list margin *ngFor="let areas of listProvice ; let i = index">
+    <button ion-item (click)="showDetailArea(i,areas)" no-lines>
       <ion-row>
         <ion-col col-11>
-          {{areas.nameArea}}
+          {{areas}}
         </ion-col>
         <ion-col col-1>
-          <ion-icon *ngIf="!areas.status" name="ios-arrow-dropright"></ion-icon>
-          <ion-icon *ngIf="areas.status" name="ios-arrow-dropdown"></ion-icon>
+          <ion-icon *ngIf="status[i] == true" name="ios-arrow-dropright"></ion-icon>
+          <ion-icon *ngIf="status[i] == false" name="ios-arrow-dropdown"></ion-icon>
         </ion-col>
       </ion-row>
     </button>
-    <ion-list *ngIf="areas.status">
-      <div *ngFor="let subAreas of areas.subArea">
+    <ion-list *ngIf="status[i] == false">
+      <div *ngFor="let subAreas of listArea">
         <ion-item no-lines>
           <button ion-item (click)="GoCalculate()">
-            {{subAreas}}
+            {{subAreas.district}} {{subAreas.subDistrict}}
           </button>
         </ion-item>
       </div>

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { testArea } from '../../app/model';
+import { testArea, LocationModel, GlobalVaraible } from '../../app/model';
 import { FormatCalculateDetailPage } from '../format-calculate-detail/format-calculate-detail';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the FormatCalculatePage page.
@@ -17,64 +18,43 @@ import { FormatCalculateDetailPage } from '../format-calculate-detail/format-cal
 })
 export class FormatCalculatePage {
 
-  listArea: testArea[];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.listArea = [
-      {
-        "nameArea": " กทม เขต.1",
-        "subArea": [
-          "เขต 1 พระนคร",
-          "เขต 2 เขตประทุม",
-          "เขต 3 บางคอแหลม",
-          "เขต 4 คลองเตย",
-          "เขต 5 พระนคร"
-        ],
-        "status": false
-      }, {
-        "nameArea": " กทม เขต.2", "subArea": [
-          "เขต 1 พระนคร",
-          "เขต 2 เขตประทุม",
-          "เขต 3 บางคอแหลม",
-          "เขต 4 คลองเตย",
-          "เขต 5 พระนคร"
-        ],
-        "status": false
-      },
-      {
-        "nameArea": " กทม เขต.3", "subArea": [
-          "เขต 1 พระนคร",
-          "เขต 2 เขตประทุม",
-          "เขต 3 บางคอแหลม",
-          "เขต 4 คลองเตย",
-          "เขต 5 พระนคร"
-        ],
-        "status": false
-      },
-      {
-        "nameArea": " กทม เขต.4",
-        "subArea": [
-          "เขต 1 พระนคร",
-          "เขต 2 เขตประทุม",
-          "เขต 3 บางคอแหลม",
-          "เขต 4 คลองเตย",
-          "เขต 5 พระนคร"
-        ],
-        "status": false
-      }
-    ];
+  // listArea: testArea[];
+  listProvice: string[];
+  listArea: LocationModel[];
+  status: boolean[];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+    this.status = [true, true]
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormatCalculatePage');
   }
 
-  showDetailArea(index: number) {
-    if (this.listArea[index].status == false) {
-      this.listArea[index].status = true;
+  ionViewDidEnter() {
+    console.log("Enter IonDidViewEnter");
+    this.http.get<string[]>("http://localhost:5000/api/Election/GetAllProvince")
+      .subscribe(data => {
+        this.listProvice = data;
+        for (var i = 0; i < this.listProvice.length; i++) {
+          this.status[i] = true;
+        }
+        console.log(this.listProvice);
+      });
+  }
+
+  showDetailArea(index: number, nameProvince: string) {
+    if (this.status[index] == true) {
+      this.status[index] = false;
     }
     else {
-      this.listArea[index].status = false;
+      this.status[index] = true;
     }
+
+    this.http.get<LocationModel[]>("http://localhost:5000/api/Election/GetLocation/" + nameProvince)
+      .subscribe(data => {
+        this.listArea = data;
+        console.log(this.listArea);
+      });
   }
 
   GoCalculate() {

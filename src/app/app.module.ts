@@ -14,6 +14,7 @@ import { DataElectionPage } from '../pages/data-election/data-election';
 import { FormatCalculatePage } from '../pages/format-calculate/format-calculate';
 import { SettingPage } from '../pages/setting/setting';
 import { FormatCalculateDetailPage } from '../pages/format-calculate-detail/format-calculate-detail';
+import {HttpClient,HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormatCalculateDetailPage } from '../pages/format-calculate-detail/form
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,7 +48,8 @@ import { FormatCalculateDetailPage } from '../pages/format-calculate-detail/form
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    HttpClient
   ]
 })
 export class AppModule { }
