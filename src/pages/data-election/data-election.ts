@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
+import { LocationCodeModel } from '../../app/model';
 
 /**
  * Generated class for the DataElectionPage page.
@@ -15,11 +17,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DataElectionPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  listArea: LocationCodeModel[];
+  colorRow : string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DataElectionPage');
+  }
+
+  ionViewDidEnter() {
+    this.http.get<LocationCodeModel[]>("http://localhost:5000/api/Election/GetAllLocationCode")
+      .subscribe(data => {
+        this.listArea = data;
+      });
   }
 
 }
