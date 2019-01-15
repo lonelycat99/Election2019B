@@ -24,14 +24,6 @@ export class FormatCalculatePage {
   status: boolean[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     this.status = [true, true]
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FormatCalculatePage');
-  }
-
-  ionViewDidEnter() {
-    console.log("Enter IonDidViewEnter");
     this.http.get<string[]>("http://localhost:5000/api/Election/GetAllProvince")
       .subscribe(data => {
         this.listProvice = data;
@@ -42,6 +34,15 @@ export class FormatCalculatePage {
       });
   }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad FormatCalculatePage');
+  }
+
+  ionViewDidEnter() {
+    console.log("Enter IonDidViewEnter");
+
+  }
+
   showDetailArea(index: number, nameProvince: string) {
     if (this.status[index] == true) {
       this.status[index] = false;
@@ -49,7 +50,6 @@ export class FormatCalculatePage {
     else {
       this.status[index] = true;
     }
-
     this.http.get<LocationModel[]>("http://localhost:5000/api/Election/GetLocation/" + nameProvince)
       .subscribe(data => {
         this.listArea = data;

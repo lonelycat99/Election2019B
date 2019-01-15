@@ -18,8 +18,12 @@ import { LocationCodeModel } from '../../app/model';
 export class DataElectionPage {
 
   listArea: LocationCodeModel[];
-  colorRow : string;
+  colorRow: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+    this.http.get<LocationCodeModel[]>("http://localhost:5000/api/Election/GetAllLocationCode")
+      .subscribe(data => {
+        this.listArea = data;
+      });
   }
 
   ionViewDidLoad() {
@@ -27,10 +31,7 @@ export class DataElectionPage {
   }
 
   ionViewDidEnter() {
-    this.http.get<LocationCodeModel[]>("http://localhost:5000/api/Election/GetAllLocationCode")
-      .subscribe(data => {
-        this.listArea = data;
-      });
+
   }
 
 }
