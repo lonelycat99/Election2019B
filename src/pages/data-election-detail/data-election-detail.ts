@@ -16,11 +16,16 @@ import { models, IEmbedConfiguration } from 'powerbi-client';
 })
 export class DataElectionDetailPage {
   data: any = {};
+  data2: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.data = this.navParams.get('idtoken');
+    this.data2 = this.navParams.get('kadname');
     console.log("token");
     console.log(this.data);
+    console.log("kadname");
+    console.log(this.data2);
+
   }
 
   ionViewDidLoad() {
@@ -48,7 +53,7 @@ export class DataElectionDetailPage {
 
       },
       operator: "In",
-      values: ["แพร่ เขต 2"],
+      values: [this.data2],
       filterType: pbi.models.FilterType.BasicFilter
     }
 
@@ -59,7 +64,7 @@ export class DataElectionDetailPage {
       embedUrl: embedUrl,
       id: embedReportId,
       permissions: models.Permissions.All,
-      filters: [basicFilter,basicFilter2],
+      filters: [basicFilter, basicFilter2],
       settings: {
         filterPaneEnabled: false,
         navContentPaneEnabled: false,
