@@ -28,14 +28,22 @@ export class LocationModel {
     note: string;
 }
 
-export class LocationCodeModel {
+export class PartyScore {
+    id: string;
+    partyName: string;
+    totalScore: number;
+    areaScore: number;
+    nameListScore: number;
+    percentScore: number;
+}
+export class AreaElection {
+
     id: string;
     nameArea: string;
-    idArea: string;
-    partyListName: string;
-    numberRegister: string;
-    nameRegister: string;
-    hasRegister: string;
+    partyName: string;
+    score: string;
+    tag: string;
+    partyWinner: string;
 }
 
 export class GlobalVaraible {
