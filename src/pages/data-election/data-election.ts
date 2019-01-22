@@ -13,7 +13,8 @@ export class DataElectionPage {
 
   colorRow: string;
   listMaxScore: AreaElection[];
-  tokenid: any;
+  tokenid: any = {};
+  namekad: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     this.http.get<AreaElection[]>("http://localhost:5000/api/Election/GetMaxAreaElection")
       .subscribe(data => {
@@ -35,10 +36,11 @@ export class DataElectionPage {
     );
   }
 
-  Godetail(token){
+  Godetail(token, nameArea) {
     token = this.tokenid
-    this.navCtrl.push("DataElectionDetailPage",{
-      idtoken:token
+    this.navCtrl.push("DataElectionDetailPage", {
+      idtoken: token,
+      kadname: nameArea
     });
   }
 
