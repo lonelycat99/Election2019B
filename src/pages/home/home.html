@@ -167,25 +167,26 @@
       </ion-col>
     </ion-row>
 
-    <ion-row class="bgTabalcol2">
+
+    <ion-row *ngFor="let scoreParty of listScore" class="bgTabalcol2">
       <ion-col text-center col-3>
-        เพื่อไทย
+        {{scoreParty.partyName}}
       </ion-col>
       <ion-col text-center col-2>
-        260
+        {{scoreParty.totalScore}}
       </ion-col>
       <ion-col text-center col-2>
-        200
+        {{scoreParty.areaScore}}
       </ion-col>
       <ion-col text-center col-2>
-        60
+        {{scoreParty.nameListScore}}
       </ion-col>
       <ion-col text-center col-3>
-        54%
+        {{scoreParty.percentScore}} %
       </ion-col>
     </ion-row>
 
-    <ion-row class="bgTabalcol3">
+    <!-- <ion-row class="bgTabalcol3">
       <ion-col text-center col-3>
         ประชาธิปัตย์
       </ion-col>
@@ -237,6 +238,6 @@
       <ion-col text-center col-3>
         1%
       </ion-col>
-    </ion-row>
+    </ion-row> -->
   </div>
 </ion-content>

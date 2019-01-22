@@ -61,7 +61,7 @@
     </button>
   </ion-list> -->
 
-  <ion-list margin *ngFor="let area of listArea">
+  <ion-list margin *ngFor="let area of listMaxScore">
     <button ion-item no-lines>
       <ion-row>
         <ion-col align-self-center col-1>
@@ -73,10 +73,10 @@
           {{area.nameArea}}
         </ion-col>
         <ion-col align-self-center text-center col-4 class="Seg2bg2">
-          เพื่อไทย
+          {{area.partyWinner}}
         </ion-col>
         <ion-col align-self-center text-center col-4 class="Seg2bg2">
-          38,000
+          {{area.score}}
         </ion-col>
       </ion-row>
     </button>
