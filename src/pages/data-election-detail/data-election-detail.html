@@ -6,13 +6,36 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>DataElectionDetailPage</ion-title>
-  </ion-navbar>
 
+  <ion-navbar color="danger">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>ผู้ดูแลการเลือกตั้งประเทศไทย</ion-title>
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-
+  <!-- <iframe width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiM2M4ZGEwMmMtZDVmYy00NmIzLWI2ZTYtOTdkNWJjNTI1YjRlIiwidCI6IjkzNzkzY2VmLTM0MDAtNGJkYi04MWY0LTkyNWNjYjNhNjkyNCIsImMiOjEwfQ%3D%3D"
+    frameborder="0" allowFullScreen="true"></iframe> -->
+  <div id="reportContainer" style="width:100% ;height:100%;padding: 5px">
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>ตั้งค่าคะแนนเป้าหมาย</ion-col>
+      <ion-col col-6>เพิ่มแทค</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ion-input type="number"></ion-input>
+      </ion-col>
+      <ion-col col-6>
+        <ion-input type="text"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <button ion-button block color="secondary">บันทึก</button>
+    </ion-row>
+  </ion-grid>
 </ion-content>

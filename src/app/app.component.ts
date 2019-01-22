@@ -7,6 +7,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
 import { DataElectionPage } from '../pages/data-election/data-election';
 import { FormatCalculatePage } from '../pages/format-calculate/format-calculate';
+import { DataElectionDetailPage } from '../pages/data-election-detail/data-election-detail';
 
 @Component({
   templateUrl: 'app.html'
