@@ -2,13 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AreaElection } from '../../app/model';
-
-/**
- * Generated class for the DataElectionPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { DataElectionDetailPage } from '../data-election-detail/data-election-detail';
 
 @IonicPage()
 @Component({
@@ -19,6 +13,8 @@ export class DataElectionPage {
 
   colorRow: string;
   listMaxScore: AreaElection[];
+  tokenid: any = {};
+  namekad: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     this.http.get<AreaElection[]>("http://localhost:5000/api/Election/GetMaxAreaElection")
       .subscribe(data => {
@@ -31,7 +27,21 @@ export class DataElectionPage {
   }
 
   ionViewDidEnter() {
+    this.http.get("http://pbiebeded.azurewebsites.net/api/values/gettoken/45f95249-7ae8-4335-899b-d66de3334065/f39c1e8b-dbe1-4b5b-bf55-1a27948bee47").subscribe(
+      it => {
+        this.tokenid = it
+        console.log("token");
+        console.log(it);
+      }
+    );
+  }
 
+  Godetail(token, nameArea) {
+    token = this.tokenid
+    this.navCtrl.push("DataElectionDetailPage", {
+      idtoken: token,
+      kadname: nameArea
+    });
   }
 
 }
