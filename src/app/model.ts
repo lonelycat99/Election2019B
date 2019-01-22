@@ -46,6 +46,11 @@ export class AreaElection {
     partyWinner: string;
 }
 
+export class FilterArea {
+    name: string;
+    isChecked: boolean;
+}
+
 export class GlobalVaraible {
     static host: string = "http://electionvars.azurewebsites.net/api/Election/";
 }
