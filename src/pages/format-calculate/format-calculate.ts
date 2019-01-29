@@ -57,8 +57,10 @@ export class FormatCalculatePage {
       });
   }
 
-  GoCalculate() {
-    this.navCtrl.push(FormatCalculateDetailPage)
+  GoCalculate(subdistrict) {
+    this.navCtrl.push(FormatCalculateDetailPage, {
+      data: subdistrict
+    })
   }
 
 }

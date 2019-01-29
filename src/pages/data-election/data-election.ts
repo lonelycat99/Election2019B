@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AreaElection } from '../../app/model';
-import { DataElectionDetailPage } from '../data-election-detail/data-election-detail';
 
 @IonicPage()
 @Component({
@@ -27,7 +26,7 @@ export class DataElectionPage {
   }
 
   ionViewDidEnter() {
-    this.http.get("http://pbiebeded.azurewebsites.net/api/values/gettoken/45f95249-7ae8-4335-899b-d66de3334065/f39c1e8b-dbe1-4b5b-bf55-1a27948bee47").subscribe(
+    this.http.get("http://pbiebeded.azurewebsites.net/api/values/gettoken/50ffda63-4985-4fdf-b052-c78cee9263ff/00308657-8890-471b-83c7-14169c8d8d3f").subscribe(
       it => {
         this.tokenid = it
         console.log("token");
@@ -42,6 +41,10 @@ export class DataElectionPage {
       idtoken: token,
       kadname: nameArea
     });
+  }
+
+  Editdata() {
+    this.navCtrl.push("EditscorePage");
   }
 
 }
