@@ -41,7 +41,7 @@
     <ion-list *ngIf="status[i] == false">
       <div *ngFor="let subAreas of listArea">
         <ion-item no-lines>
-          <button ion-item (click)="GoCalculate()">
+          <button ion-item (click)="GoCalculate(subAreas.subDistrict)">
             {{subAreas.district}} {{subAreas.subDistrict}}
           </button>
         </ion-item>

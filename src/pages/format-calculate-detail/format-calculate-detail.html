@@ -20,7 +20,7 @@
     <ion-col col-3>
       <ion-item class="background" no-lines>
         <ion-label>
-          พระนคร,ป้อมปราบศัตรูพ่าย
+          {{data}}
         </ion-label>
       </ion-item>
     </ion-col>
@@ -29,7 +29,7 @@
   <ion-row margin>
     <ion-col col-5 class="backgroundGrey">
       <ion-item class="backgroundGrey" no-lines>
-        <ion-label color="light">
+        <ion-label color="light" (click)="createparty()">
           เพิ่มพรรค
         </ion-label>
       </ion-item>
