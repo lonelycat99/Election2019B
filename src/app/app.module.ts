@@ -14,7 +14,9 @@ import { DataElectionPage } from '../pages/data-election/data-election';
 import { FormatCalculatePage } from '../pages/format-calculate/format-calculate';
 import { SettingPage } from '../pages/setting/setting';
 import { FormatCalculateDetailPage } from '../pages/format-calculate-detail/format-calculate-detail';
-import {HttpClient,HttpClientModule} from '@angular/common/http'
+import { HttpClient, HttpClientModule } from '@angular/common/http'
+import { DataElectionDetailPage } from '../pages/data-election-detail/data-election-detail';
+import { EditscorePage } from '../pages/editscore/editscore';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {HttpClient,HttpClientModule} from '@angular/common/http'
     DataElectionPage,
     FormatCalculatePage,
     SettingPage,
-    FormatCalculateDetailPage
+    FormatCalculateDetailPage,
+    DataElectionDetailPage,
+    EditscorePage
   ],
   imports: [
     BrowserModule,
@@ -42,8 +46,10 @@ import {HttpClient,HttpClientModule} from '@angular/common/http'
     TabsPage,
     DataElectionPage,
     FormatCalculatePage,
-    SettingPage, 
-    FormatCalculateDetailPage
+    SettingPage,
+    FormatCalculateDetailPage,
+    DataElectionDetailPage,
+    EditscorePage
   ],
   providers: [
     StatusBar,
