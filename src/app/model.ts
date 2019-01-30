@@ -1,3 +1,4 @@
+
 export class ElectionModel {
     id: string;
     nameArea: string;
@@ -49,6 +50,40 @@ export class AreaElection {
 export class FilterArea {
     name: string;
     isChecked: boolean;
+}
+
+export class DataMaxScore {
+    id: string;
+    nameArea: string;
+    idProvince: string;
+    nameParty: string;
+    initialParty: string;
+    noRegister: string;
+    nameRegister: string;
+    status: boolean;
+    tag: string;
+    score: number;
+    targetScore: number;
+    pollScore: number;
+}
+
+export class AreaData {
+    Id: string;
+    NameParty: string;
+    NameArea: string;
+    LocationCode: string;
+    IDProvince: string;
+    District: string;
+    SubDistrict: string;
+    NameRegister: string;
+    NoRegister: string;
+    Status: string;
+    ScoreReceive: DataScore[];
+}
+
+export class DataScore {
+    DateElection: Date;
+    Score: number;
 }
 
 export class GlobalVaraible {

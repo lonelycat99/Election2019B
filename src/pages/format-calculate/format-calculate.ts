@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { testArea, LocationModel, GlobalVaraible } from '../../app/model';
+import { testArea, LocationModel, GlobalVaraible, AreaData } from '../../app/model';
 import { FormatCalculateDetailPage } from '../format-calculate-detail/format-calculate-detail';
 import { HttpClient } from '@angular/common/http';
 
@@ -20,11 +20,11 @@ export class FormatCalculatePage {
 
   // listArea: testArea[];
   listProvice: string[];
-  listArea: LocationModel[];
+  listArea: AreaData[];
   status: boolean[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     this.status = [true, true]
-    this.http.get<string[]>("http://localhost:5000/api/Election/GetAllProvince")
+    this.http.get<string[]>("http://localhost:5000/api/Election/GetAreaAll")
       .subscribe(data => {
         this.listProvice = data;
         for (var i = 0; i < this.listProvice.length; i++) {
@@ -43,14 +43,14 @@ export class FormatCalculatePage {
 
   }
 
-  showDetailArea(index: number, nameProvince: string) {
+  showDetailArea(index: number, nameArea: string) {
     if (this.status[index] == true) {
       this.status[index] = false;
     }
     else {
       this.status[index] = true;
     }
-    this.http.get<LocationModel[]>("http://localhost:5000/api/Election/GetLocation/" + nameProvince)
+    this.http.get<AreaData[]>("http://localhost:5000/api/Election/GetDistrictAll/" + nameArea)
       .subscribe(data => {
         this.listArea = data;
         console.log(this.listArea);
