@@ -14,12 +14,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'format-calculate-detail.html',
 })
 export class FormatCalculateDetailPage {
+  data: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.data = this.navParams.get('data');
+    console.log(this.data);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormatCalculateDetailPage');
+  }
+  createparty() {
+    this.navCtrl.push("CreatepartyPage");
   }
 
 }

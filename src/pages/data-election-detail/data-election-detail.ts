@@ -31,8 +31,8 @@ export class DataElectionDetailPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DataElectionDetailPage');
     let accessToken = this.data;
-    let embedUrl = 'https://app.powerbi.com/reportEmbed?reportId=f39c1e8b-dbe1-4b5b-bf55-1a27948bee47&groupId=45f95249-7ae8-4335-899b-d66de3334065';
-    let embedReportId = 'f39c1e8b-dbe1-4b5b-bf55-1a27948bee47';
+    let embedUrl = 'https://app.powerbi.com/reportEmbed?reportId=00308657-8890-471b-83c7-14169c8d8d3f&groupId=50ffda63-4985-4fdf-b052-c78cee9263ff';
+    let embedReportId = '00308657-8890-471b-83c7-14169c8d8d3f';
     const basicFilter: pbi.models.IBasicFilter = {
       $schema: "http://powerbi.com/product/schema#basic",
       target: {

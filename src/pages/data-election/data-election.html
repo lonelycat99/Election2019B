@@ -61,24 +61,28 @@
   </ion-list> -->
 
   <ion-list margin *ngFor="let area of listMaxScore">
-    <button ion-item no-lines (click)="Godetail(token,area.nameArea)">
+    <ion-grid>
       <ion-row>
         <ion-col align-self-center col-1>
-          <button ion-button color="light">
+          <button ion-button color="danger" (click)="Editdata()">
             <ion-icon name="ios-create"></ion-icon>
           </button>
         </ion-col>
-        <ion-col align-self-center text-center col-3 class="Seg2bg2">
+        <!-- <button ion-item no-lines > -->
+        <ion-col align-self-center text-center col-3 class="Seg2bg2" (click)="Godetail(token,area.nameArea)">
           {{area.nameArea}}
         </ion-col>
         <ion-col align-self-center text-center col-4 class="Seg2bg2">
           {{area.nameParty}}
+        <ion-col align-self-center text-center col-4 class="Seg2bg2" (click)="Godetail(token,area.nameArea)">
+          {{area.partyWinner}}
         </ion-col>
-        <ion-col align-self-center text-center col-4 class="Seg2bg2">
+        <ion-col align-self-center text-center col-4 class="Seg2bg2" (click)="Godetail(token,area.nameArea)">
           {{area.score}}
         </ion-col>
+        <!-- </button> -->
       </ion-row>
-    </button>
+    </ion-grid>
   </ion-list>
 
 
