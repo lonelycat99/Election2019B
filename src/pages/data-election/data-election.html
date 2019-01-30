@@ -39,25 +39,34 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngFor="let area of listMaxScore">
-    <ion-col align-self-center col-1>
-      <button ion-button color="danger" (click)="Editdata()">
-        <ion-icon name="ios-create"></ion-icon>
-      </button>
-    </ion-col>
+  <div ion-item *ngFor="let area of listMaxScore">
 
-    <ion-col align-self-center text-center col-3 class="Seg2bg2">
-      {{area.nameArea}}
-    </ion-col>
+    <ion-row>
+      <ion-col align-self-center col-1>
+        <button ion-button color="danger" (click)="Editdata()">
+          <ion-icon name="ios-create"></ion-icon>
+        </button>
+      </ion-col>
 
-    <ion-col align-self-center text-center col-4 class="Seg2bg2">
-      {{area.nameParty}}
-    </ion-col>
+      <ion-col align-self-center text-center col-3 class="Seg2bg2">
+        {{area.nameArea}}
+      </ion-col>
 
-    <ion-col align-self-center text-center col-4 class="Seg2bg2">
-      {{area.score}}
-    </ion-col>
-  </ion-row>
+      <ion-col align-self-center text-center col-4 class="Seg2bg2">
+        {{area.nameParty}}
+      </ion-col>
+
+      <ion-col align-self-center text-center col-4 class="Seg2bg2">
+        {{area.score}}
+      </ion-col>
+
+    </ion-row>
+  </div>
+
+
+
+
+
 
 
 </ion-content>
