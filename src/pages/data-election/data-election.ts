@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { AreaElection, DataMaxScore } from '../../app/model';
+import { DataMaxScore } from '../../app/model';
 import { DataElectionDetailPage } from '../data-election-detail/data-election-detail';
+import { EditscorePage } from '../editscore/editscore';
 
 
 @IonicPage()
@@ -39,14 +40,14 @@ export class DataElectionPage {
 
   Godetail(token, nameArea) {
     token = this.tokenid
-    this.navCtrl.push("DataElectionDetailPage", {
+    this.navCtrl.push(DataElectionDetailPage, {
       idtoken: token,
       kadname: nameArea
     });
   }
 
   Editdata() {
-    this.navCtrl.push("EditscorePage");
+    this.navCtrl.push(EditscorePage);
   }
 
 }
