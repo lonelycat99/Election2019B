@@ -24,7 +24,7 @@ export class FormatCalculatePage {
   status: boolean[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     this.status = [true, true]
-    this.http.get<string[]>("http://localhost:5000/api/Election/GetAreaAll")
+    this.http.get<string[]>("https://electionvars.azurewebsites.net/api/Election/GetAreaAll")
       .subscribe(data => {
         this.listProvice = data;
         for (var i = 0; i < this.listProvice.length; i++) {
@@ -50,7 +50,7 @@ export class FormatCalculatePage {
     else {
       this.status[index] = true;
     }
-    this.http.get<AreaData[]>("http://localhost:5000/api/Election/GetDistrictAll/" + nameArea)
+    this.http.get<AreaData[]>("https://electionvars.azurewebsites.net/api/Election/GetDistrictAll/" + nameArea)
       .subscribe(data => {
         this.listArea = data;
         console.log(this.listArea);

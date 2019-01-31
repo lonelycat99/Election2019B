@@ -14,12 +14,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'editscore.html',
 })
 export class EditscorePage {
+  data: any=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditscorePage');
+    this.data = this.navParams.get('dataid');
+    console.log(this.data);
   }
 
 }
