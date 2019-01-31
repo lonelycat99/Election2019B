@@ -18,7 +18,7 @@ export class DataElectionPage {
   tokenid: any = {};
   namekad: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
-    this.http.get<DataMaxScore[]>("http://localhost:5000/api/Election/GetMaxScoreArea")
+    this.http.get<DataMaxScore[]>("https://electionvars.azurewebsites.net/api/Election/GetMaxScoreArea")
       .subscribe(data => {
         this.listMaxScore = data;
       });
@@ -46,8 +46,10 @@ export class DataElectionPage {
     });
   }
 
-  Editdata() {
-    this.navCtrl.push(EditscorePage);
+  Editdata(id) {
+    this.navCtrl.push(EditscorePage,{
+      dataid:id
+    });
   }
 
 }
