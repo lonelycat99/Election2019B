@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 /**
  * Generated class for the FormatCalculateDetailPage page.
@@ -16,7 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class FormatCalculateDetailPage {
   data: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController) {
     this.data = this.navParams.get('data');
     console.log(this.data);
   }
@@ -25,7 +25,8 @@ export class FormatCalculateDetailPage {
     console.log('ionViewDidLoad FormatCalculateDetailPage');
   }
   createparty() {
-    this.navCtrl.push("CreatepartyPage");
+    const modal = this.modalCtrl.create("CreatepartyPage");
+    modal.present();
   }
 
 }

@@ -87,3 +87,12 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+
+// .tabs-md .tab-button[aria-selected=true] {
+// 	color: red;
+// }
+
+.tabs-md .tab-button[aria-selected=true] .tab-button-text {
+color: red
+}

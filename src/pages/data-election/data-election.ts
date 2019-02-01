@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { DataMaxScore } from '../../app/model';
 import { DataElectionDetailPage } from '../data-election-detail/data-election-detail';
@@ -17,7 +17,7 @@ export class DataElectionPage {
   listMaxScore: DataMaxScore[];
   tokenid: any = {};
   namekad: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient,public modalCtrl: ModalController) {
     this.http.get<DataMaxScore[]>("https://electionvars.azurewebsites.net/api/Election/GetMaxScoreArea")
       .subscribe(data => {
         this.listMaxScore = data;
@@ -47,9 +47,13 @@ export class DataElectionPage {
   }
 
   Editdata(id) {
-    this.navCtrl.push(EditscorePage,{
+    const modal = this.modalCtrl.create(EditscorePage,{
       dataid:id
     });
+    modal.present();
+    // this.navCtrl.push(EditscorePage,{
+    //   dataid:id
+    // });
   }
 
 }
