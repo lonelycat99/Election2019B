@@ -20,6 +20,5 @@ export class TabsPage {
   tab5Root = UploadFilePage
 
   constructor() {
-
   }
 }

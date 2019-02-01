@@ -19,13 +19,18 @@ page-home {
 .bgTabalcol1{
     background:#FFFFFF; 
     font-size: 24px;
-    
 }
 
-.bgTabalcol2{
-    background:#FAFBFD; 
+.bgTabalcol2:nth-child(even){
+    background:gray; 
     font-size: 24px;
 }
+
+.bgTabalcolxx:nth-child(odd){
+    background:white; 
+    font-size: 24px;
+}
+
 .bgTabalcol3{
     background:#EFEEF3; 
     font-size: 24px;
@@ -62,3 +67,4 @@ page-home {
     // height: 150px;
     background: transparent !important;
 }
+
