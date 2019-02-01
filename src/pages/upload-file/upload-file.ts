@@ -24,22 +24,15 @@ export class UploadFilePage {
   }
 
   showAlert() {
-
     const confirm = this.alertController.create({
       title: 'อัปโหลดคะแนนสำเร็จ',
       buttons: [
         {
           text: 'OK',
-          handler: () => {
-
-          }
+          handler: () => {}
         }
       ]
     });
     confirm.present();
   }
-
-
-
-
 }
