@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the UploadFilePage page.
@@ -15,11 +15,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UploadFilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public alertController: AlertController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UploadFilePage');
   }
+
+  showAlert() {
+
+    const confirm = this.alertController.create({
+      title: 'อัปโหลดคะแนนสำเร็จ',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+
+
 
 }

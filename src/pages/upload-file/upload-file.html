@@ -18,4 +18,22 @@
 
 <ion-content padding>
 
+  <ion-row margin class="background">
+    <ion-col col-3>
+      <ion-item class="background" no-lines>
+        <ion-label>อัปโหลดไฟล์คะแนนโพล</ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-item no-lines>
+    <ion-input type="file"></ion-input>
+  </ion-item>
+
+  <ion-row padding>
+    <ion-col col-1>
+      <button ion-button block color="green" (click)="showAlert()">อัปโหลดคะแนน</button>
+    </ion-col>
+  </ion-row>
+
 </ion-content>
