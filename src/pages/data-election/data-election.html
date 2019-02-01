@@ -39,29 +39,29 @@
     </ion-col>
   </ion-row>
 
-  <div ion-item *ngFor="let area of listMaxScore">
+  
 
-    <ion-row>
+    <ion-row *ngFor="let area of listMaxScore" class="bgTabalcol2 bgTabalcolxx">
       <ion-col align-self-center col-1>
         <button ion-button color="danger" (click)="Editdata(area)">
           <ion-icon name="ios-create"></ion-icon>
         </button>
       </ion-col>
 
-      <ion-col align-self-center text-center col-3 class="Seg2bg2" (click)="Godetail(token,area.nameArea)">
+      <ion-col align-self-center text-center col-3 (click)="Godetail(token,area.nameArea)">
         {{area.nameArea}}
       </ion-col>
 
-      <ion-col align-self-center text-center col-4 class="Seg2bg2" (click)="Godetail(token,area.nameArea)">
+      <ion-col align-self-center text-center col-4 (click)="Godetail(token,area.nameArea)">
         {{area.nameParty}}
       </ion-col>
 
-      <ion-col align-self-center text-center col-4 class="Seg2bg2" (click)="Godetail(token,area.nameArea)">
+      <ion-col align-self-center text-center col-4 (click)="Godetail(token,area.nameArea)">
         {{area.score}}
       </ion-col>
 
     </ion-row>
-  </div>
+ 
 
 
 
