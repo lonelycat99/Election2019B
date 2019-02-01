@@ -17,6 +17,7 @@ import { FormatCalculateDetailPage } from '../pages/format-calculate-detail/form
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { DataElectionDetailPage } from '../pages/data-election-detail/data-election-detail';
 import { EditscorePage } from '../pages/editscore/editscore';
+import { UploadFilePage } from '../pages/upload-file/upload-file';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { EditscorePage } from '../pages/editscore/editscore';
     SettingPage,
     FormatCalculateDetailPage,
     DataElectionDetailPage,
-    EditscorePage
+    EditscorePage,
+    UploadFilePage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { EditscorePage } from '../pages/editscore/editscore';
     SettingPage,
     FormatCalculateDetailPage,
     DataElectionDetailPage,
-    EditscorePage
+    EditscorePage,
+    UploadFilePage
   ],
   providers: [
     StatusBar,
