@@ -45,4 +45,13 @@ export class HomePage {
     }
   }
 
+  kad() {
+    this.navCtrl.push("KaddetailPage")
+  }
+
+  partylist() {
+    this.navCtrl.push("PartylistdetailPage")
+
+  }
+
 }
