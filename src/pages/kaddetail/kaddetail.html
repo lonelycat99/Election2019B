@@ -14,8 +14,12 @@
 
 
 <ion-content padding>
-  <ion-row class="bgTabalcol1">
-    <ion-col col-4>
+
+  <ion-row>
+    <ion-col col-1>
+      <h3 text-center>ลำดับ</h3>
+    </ion-col>
+    <ion-col col-3>
       <h3 text-center>ชื่อเขต</h3>
     </ion-col>
     <ion-col col-4>
@@ -25,7 +29,23 @@
       <h3 text-center>คะแนน</h3>
     </ion-col>
   </ion-row>
-  <ion-row class="bgTabalcol1">
+
+  <ion-row *ngFor="let scoreArea of listScoreAreaOfParty; let i = index" class="bgTabalcol2 bgTabalcolxx">
+    <ion-col col-1>
+      <h3 text-center>{{i+1}}</h3>
+    </ion-col>
+    <ion-col col-3>
+      <h3 text-center>{{scoreArea.nameArea}}</h3>
+    </ion-col>
+    <ion-col col-4>
+      <h3 text-center>{{scoreArea.nameRegister}}</h3>
+    </ion-col>
+    <ion-col col-4>
+      <h3 text-center>{{scoreArea.score}}</h3>
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-row class="bgTabalcol1">
     <ion-col col-4>
       <h3 text-center>กรุงเทพ เขต 1</h3>
     </ion-col>
@@ -57,7 +77,7 @@
     <ion-col col-4>
       <h3 text-center>20000</h3>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
 
 
 </ion-content>

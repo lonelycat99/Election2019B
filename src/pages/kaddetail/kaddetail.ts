@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PartyScore, GlobalVaraible, ScoreArea } from '../../app/model';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the KaddetailPage page.
@@ -15,7 +17,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class KaddetailPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  listScoreAreaOfParty: ScoreArea[] = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+    var idParty = this.navParams.get('_idParty');
+    this.http.get<ScoreArea[]>(GlobalVaraible.host + "GetScoreAreaByParty/" + idParty)
+      .subscribe(data => {
+        this.listScoreAreaOfParty = data;
+      });
   }
 
   ionViewDidLoad() {

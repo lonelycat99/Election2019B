@@ -42,13 +42,12 @@ export class HomePage {
     }
   }
 
-  kad() {
-    this.navCtrl.push("KaddetailPage")
+  showScoreAreaOfParty(idPart: string) {
+    this.navCtrl.push("KaddetailPage", { _idParty: idPart });
   }
 
-  partylist() {
-    this.navCtrl.push("PartylistdetailPage")
-
+  showScorePartyListOfParty() {
+    this.navCtrl.push("PartylistdetailPage");
   }
 
 }

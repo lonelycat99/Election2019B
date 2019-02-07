@@ -82,11 +82,26 @@ export class AreaData {
     ScoreReceive: DataScore[];
 }
 
+export class ScoreArea {
+    id: string;
+    idArea: string;
+    nameArea: string;
+    idParty: string;
+    nameParty: string;
+    noRegister: string;
+    nameRegister: string;
+    status: string;
+    nameInitial: string;
+    tags: string;
+    score: string;
+    source: string;
+}
+
 export class DataScore {
     DateElection: Date;
     Score: number;
 }
 
 export class GlobalVaraible {
-    static host: string = "http://electionvars.azurewebsites.net/api/Election/";
+    static host: string = "https://electionvars.azurewebsites.net/api/ElectionV2/";
 }
