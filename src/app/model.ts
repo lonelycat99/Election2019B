@@ -31,6 +31,7 @@ export class LocationModel {
 
 export class PartyScore {
     id: string;
+    idParty: string;
     partyName: string;
     totalScore: number;
     areaScore: number;

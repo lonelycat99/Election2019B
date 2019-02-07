@@ -22,9 +22,9 @@
     </ion-row>
 
     <ion-row padding class="background">
-      <ion-col col-3 *ngFor="let party of listFilter">
+      <ion-col col-3 *ngFor="let party of listScoreAll">
         <ion-item class="background" no-lines>
-          <ion-label>{{party.name}}</ion-label>
+          <ion-label>{{party.partyName}}</ion-label>
           <ion-checkbox color="danger" [(ngModel)]="party.isChecked" (ionChange)="checkFilter()"></ion-checkbox>
         </ion-item>
       </ion-col>
