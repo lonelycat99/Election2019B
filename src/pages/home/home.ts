@@ -12,6 +12,10 @@ export class HomePage {
   listScoreAll: PartyScore[];
   listScore: PartyScore[];
   listFilter: FilterArea[] = [];
+  listFirst4: any = []
+  listTotal: any = []
+  check: boolean = false
+
 
   constructor(public navCtrl: NavController, public http: HttpClient) {
 
@@ -23,7 +27,19 @@ export class HomePage {
           this.listFilter.push({ name: data.partyName, isChecked: false })
         });
         console.log(this.listScore);
+        this.listTotal = this.listFilter;
+        console.log(this.listTotal)
+        for (let i = 0; i <= 3; i++) {
+          this.listFirst4[i] = this.listFilter[i]
+        };
       });
+  }
+  testShowParty() {
+    if (this.check == false) {
+      this.check = true
+    }else{
+      this.check = false
+    }
   }
 
   checkFilter() {
