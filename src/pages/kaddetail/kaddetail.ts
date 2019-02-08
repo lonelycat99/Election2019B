@@ -20,9 +20,12 @@ export class KaddetailPage {
   listScoreAreaOfParty: ScoreArea[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     var idParty = this.navParams.get('_idParty');
-    this.http.get<ScoreArea[]>(GlobalVaraible.host + "GetScoreAreaByParty/" + idParty)
+    console.log(idParty);
+
+    this.http.get<ScoreArea[]>(GlobalVaraible.host + "GetAreaWinScoreParty/" + idParty)
       .subscribe(data => {
         this.listScoreAreaOfParty = data;
+        console.log(this.listScoreAreaOfParty);
       });
   }
 
