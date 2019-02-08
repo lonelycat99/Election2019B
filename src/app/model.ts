@@ -1,3 +1,5 @@
+import { DateTime } from "ionic-angular";
+
 export class PartyScore {
     id: string;
     idParty: string;
@@ -50,6 +52,20 @@ export class DataScore {
     tags: string[];
     score: number;
     source: string;
+}
+
+export class ScorePoll {
+    id: string;
+    idParty: string;
+    nameParty: string;
+    idArea: string;
+    nameArea: string;
+    datePoll: DateTime;
+    score: number;
+    percentScore: number;
+    source: string;
+    targetScoreDefault: number;
+    targetScore: number;
 }
 
 

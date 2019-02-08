@@ -20,31 +20,11 @@
     </ion-col>
   </ion-row>
 
-  <div *ngFor="let areas of listProvice; let i = index" class="bgTabalcol2 bgTabalcolxx">
-  <button ion-item (click)="showDetailArea(i,areas)" no-lines>
-    <ion-row margin>
+  <ion-row margin *ngFor="let areas of listArea" class="bgTabalcol2 bgTabalcolxx"
+    (click)="GoCalculate(areas.idArea)">
     <ion-col col-11>
-      {{areas}}
+      {{areas.nameArea}}
     </ion-col>
-    <ion-col col-1>
-      <ion-icon *ngIf="status[i] == true" name="ios-arrow-dropright"></ion-icon>
-      <ion-icon *ngIf="status[i] == false" name="ios-arrow-dropdown"></ion-icon>
-    </ion-col>
-    </ion-row>
-   
-  </button>
-
-  <div *ngIf="status[i] == false">
-    <div *ngFor="let subAreas of listArea">
-      <ion-item no-lines>
-        <button ion-item (click)="GoCalculate(subAreas.subDistrict)">
-          {{subAreas.district}} {{subAreas.subDistrict}}
-        </button>
-      </ion-item>
-    </div>
-  </div>
-  
-</div>
-
+  </ion-row>
 
 </ion-content>
