@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as pbi from 'powerbi-client';
 import { models, IEmbedConfiguration } from 'powerbi-client';
+import { HttpClient } from '@angular/common/http';
+import { ScoreArea } from '../../app/model';
 /**
  * Generated class for the DataElectionDetailPage page.
  *
@@ -17,15 +19,26 @@ import { models, IEmbedConfiguration } from 'powerbi-client';
 export class DataElectionDetailPage {
   data: any = {};
   data2: string;
+  idarea: any = {};
+  items: ScoreArea[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     this.data = this.navParams.get('idtoken');
     this.data2 = this.navParams.get('kadname');
+    this.idarea = this.navParams.get('idarea');
     console.log("token");
     console.log(this.data);
     console.log("kadname");
     console.log(this.data2);
+    console.log("idarea");
+    console.log(this.idarea);
 
+    this.http.get<ScoreArea[]>("https://electionvars.azurewebsites.net/api/ElectionV2/GetScoreArea/" + this.idarea).subscribe(
+      it => {
+        this.items = it
+        console.log(it);
+      }
+    );
   }
 
   ionViewDidLoad() {

@@ -55,17 +55,22 @@ export class FilterArea {
 
 export class DataMaxScore {
     id: string;
+    idArea: string;
+    idParty: string;
     nameArea: string;
-    idProvince: string;
+    nameInitial: string;
     nameParty: string;
-    initialParty: string;
-    noRegister: string;
     nameRegister: string;
-    status: boolean;
-    tag: string;
+    noRegister: string;
     score: number;
-    targetScore: number;
-    pollScore: number;
+    source: number;
+    status: boolean;
+    tags: string[];
+}
+
+export class DataScore {
+    DateElection: Date;
+    Score: number;
 }
 
 export class AreaData {
@@ -82,10 +87,21 @@ export class AreaData {
     ScoreReceive: DataScore[];
 }
 
-export class DataScore {
-    DateElection: Date;
-    Score: number;
+export class ScoreArea {
+    id: string;
+    idArea: string;
+    nameArea: string;
+    idParty: string;
+    nameParty: string;
+    noRegister: string;
+    nameRegister: string;
+    status: boolean;
+    nameInitial: string;
+    tags: string[];
+    score: number;
+    source: string;
 }
+
 
 export class GlobalVaraible {
     static host: string = "http://electionvars.azurewebsites.net/api/Election/";
