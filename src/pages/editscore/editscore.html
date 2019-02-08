@@ -48,14 +48,14 @@
           <ion-col col-3></ion-col>
         </ion-row>
         <ion-row>
-          <ion-input placeholder="กรอกคะแนนใหม่"></ion-input>
+          <ion-input placeholder="กรอกคะแนนใหม่" [(ngModel)]="mymodel.score"></ion-input>
         </ion-row>
         <ion-row>
           <ion-col col-6>
           </ion-col>
           <ion-col col-3></ion-col>
           <ion-col col-3>
-            <button ion-button style="background: orange">ใช้คะแนนใหม่</button>
+            <button ion-button style="background: orange" (click)="submit()">ใช้คะแนนใหม่</button>
           </ion-col>
         </ion-row>
       </ion-grid>

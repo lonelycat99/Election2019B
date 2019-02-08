@@ -21,7 +21,7 @@ export class FormatCalculatePage {
   listArea: ScoreArea[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
-    this.http.get<ScoreArea[]>("http://localhost:5000/api/ElectionV3/GetAllArea")
+    this.http.get<ScoreArea[]>(GlobalVaraible.host+"GetAllArea")
       .subscribe(data => {
         this.listArea = data;
         console.log(this.listArea);

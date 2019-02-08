@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { ScorePoll } from '../../app/model';
+import { ScorePoll, GlobalVaraible } from '../../app/model';
 
 /**
  * Generated class for the FormatCalculateDetailPage page.
@@ -25,7 +25,7 @@ export class FormatCalculateDetailPage {
     this.nameArea = this.navParams.get('_nameArea');
     console.log(this.idArea);
     console.log(this.nameArea);
-    this.http.get<ScorePoll[]>("http://localhost:5000/api/ElectionV3/GetAreaScorePoll/" + this.idArea)
+    this.http.get<ScorePoll[]>(GlobalVaraible.host + "GetAreaScorePoll/" + this.idArea)
       .subscribe(data => {
         this.listScorePoll = data;
         this.listScorePoll.forEach(data => {
