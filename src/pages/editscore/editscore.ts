@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the EditscorePage page.
@@ -14,15 +15,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'editscore.html',
 })
 export class EditscorePage {
-  data: any=[];
+  data: any = [];
+  id: any = {};
+  mymodel: any = {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public viewCtrl: ViewController) {
+
+    // https://electionvars.azurewebsites.net/api/ElectionV3/Edititem/Edititem?id=
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditscorePage');
     this.data = this.navParams.get('dataid');
     console.log(this.data);
-  }
+    this.id = this.data.id;
 
+  }
+  submit() {
+    this.http.post("https://electionvars.azurewebsites.net/api/ElectionV3/Edititem/" + this.id, {
+      "score": this.mymodel.score
+    }).subscribe(data => {
+      this.viewCtrl.dismiss(data);
+    });
+
+  }
 }

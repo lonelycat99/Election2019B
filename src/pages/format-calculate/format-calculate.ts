@@ -52,7 +52,7 @@ export class FormatCalculatePage {
     }
     this.http.get<AreaData[]>("https://electionvars.azurewebsites.net/api/Election/GetDistrictAll/" + nameArea)
       .subscribe(data => {
-        this.listArea = data;
+        // this.listArea = data;
         console.log(this.listArea);
       });
   }

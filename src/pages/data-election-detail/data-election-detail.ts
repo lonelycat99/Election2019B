@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import * as pbi from 'powerbi-client';
 import { models, IEmbedConfiguration } from 'powerbi-client';
 import { HttpClient } from '@angular/common/http';
 import { ScoreArea } from '../../app/model';
+import { EditscorePage } from '../editscore/editscore';
 /**
  * Generated class for the DataElectionDetailPage page.
  *
@@ -22,7 +23,7 @@ export class DataElectionDetailPage {
   idarea: any = {};
   items: ScoreArea[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController) {
     this.data = this.navParams.get('idtoken');
     this.data2 = this.navParams.get('kadname');
     this.idarea = this.navParams.get('idarea');
@@ -33,7 +34,20 @@ export class DataElectionDetailPage {
     console.log("idarea");
     console.log(this.idarea);
 
-    this.http.get<ScoreArea[]>("https://electionvars.azurewebsites.net/api/ElectionV2/GetScoreArea/" + this.idarea).subscribe(
+  }
+
+  ionViewDidEnter() {
+    console.log('ionViewDidLoad5555555');
+    this.http.get<ScoreArea[]>("https://electionvars.azurewebsites.net/api/ElectionV3/GetScoreAreasWithArea/" + this.idarea).subscribe(
+      it => {
+        this.items = it
+        console.log(it);
+      }
+    );
+  }
+  ionViewLeave() {
+    console.log('ionView9999999');
+    this.http.get<ScoreArea[]>("https://electionvars.azurewebsites.net/api/ElectionV3/GetScoreAreasWithArea/" + this.idarea).subscribe(
       it => {
         this.items = it
         console.log(it);
@@ -101,4 +115,20 @@ export class DataElectionDetailPage {
     report.off("loaded");
   }
 
+  log(data) {
+    console.log(data);
+
+  }
+
+  Editdata(id) {
+    // const modal = this.modalCtrl.create(EditscorePage, {
+    //   dataid: id
+    // });
+    // modal.present();
+    this.navCtrl.push(EditscorePage, {
+      dataid: id
+    });
+    console.log(id);
+
+  }
 }

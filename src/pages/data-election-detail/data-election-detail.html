@@ -61,7 +61,7 @@
       <ion-col col-1>
       </ion-col>
     </ion-row>
-    <ion-row *ngFor="let data of items" class="bgTabalcol2 bgTabalcolxx">
+    <ion-row *ngFor="let data of items" class="bgTabalcol2 bgTabalcolxx" (click)="log(data.id)">
       <ion-col col-4 text-left>
         {{data.nameParty}}
       </ion-col>
@@ -73,7 +73,7 @@
       <ion-col col-2 text-left>
         {{data.score | number}}
       </ion-col>
-      <ion-col col-1 text-left>
+      <ion-col col-1 text-left (click)="Editdata(data)">
         แก้ไข
       </ion-col>
     </ion-row>

@@ -19,11 +19,7 @@ export class DataElectionPage {
   tokenid: any = {};
   namekad: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController) {
-    this.http.get<ScoreArea[]>("https://electionvars.azurewebsites.net/api/ElectionV2/GetMaxScoreArea")
-      .subscribe(data => {
-        this.items = data;
-        this.listMaxScore = this.items;
-      });
+
     this.http.get("http://pbiebeded.azurewebsites.net/api/values/gettoken/50ffda63-4985-4fdf-b052-c78cee9263ff/00308657-8890-471b-83c7-14169c8d8d3f").subscribe(
       it => {
         this.tokenid = it
@@ -33,18 +29,25 @@ export class DataElectionPage {
     this.listMaxScore = this.items;
     this.initializeItems();
   }
+  ionViewDidEnter() {
+    this.http.get<ScoreArea[]>("https://electionvars.azurewebsites.net/api/ElectionV3/GetAllAreaMaxScore")
+      .subscribe(data => {
+        this.items = data;
+        this.listMaxScore = this.items;
+      });
+  }
 
 
   initializeItems() {
     this.listMaxScore = this.items;
   }
 
-  Godetail(token, nameArea,idArea) {
+  Godetail(token, nameArea, idArea) {
     token = this.tokenid
     this.navCtrl.push(DataElectionDetailPage, {
       idtoken: token,
       kadname: nameArea,
-      idarea:idArea
+      idarea: idArea
     });
   }
 
