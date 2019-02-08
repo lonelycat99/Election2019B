@@ -20,27 +20,50 @@
         <button ion-button color="light">ส่งผลประเมิน</button>
       </ion-col>
     </ion-row>
-
-    <ion-row padding class="background">
-      <ion-col col-3 *ngFor="let party of listFilter">
-        <ion-item class="background" no-lines>
-          <ion-label>{{party.name}}</ion-label>
-          <ion-checkbox color="danger" [(ngModel)]="party.isChecked" (ionChange)="checkFilter()"></ion-checkbox>
-        </ion-item>
-      </ion-col>
-
-      <ion-col col-3>
-        <ion-item class="background" no-lines>
-          <ion-label>อื่นๆ</ion-label>
-          <ion-checkbox color="danger"></ion-checkbox>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+    <div *ngIf="check == false">
+      <ion-row padding class="background">
+        <ion-col col-3 *ngFor="let party of listFirst4">
+          <ion-item class="background" no-lines>
+            <ion-label>{{party.name}}</ion-label>
+            <ion-checkbox color="danger" [(ngModel)]="party.isChecked" (ionChange)="checkFilter()"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+  
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>อื่นๆ</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      </div>
+      <div *ngIf="check == true">
+      <ion-row padding class="background">
+        <ion-col col-3 *ngFor="let party of listTotal">
+          <ion-item class="background" no-lines>
+            <ion-label>{{party.name}}</ion-label>
+            <ion-checkbox color="danger" [(ngModel)]="party.isChecked" (ionChange)="checkFilter()"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+  
+        <ion-col col-3>
+          <ion-item class="background" no-lines>
+            <ion-label>อื่นๆ</ion-label>
+            <ion-checkbox color="danger"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      </div>
 
     <ion-row class="lineT"></ion-row>
 
     <ion-row padding text-center class="background">
-      <ion-label>การแสดงผลของตาราง</ion-label>
+      <ion-label *ngIf="check == true" (click)="testShowParty()">การแสดงผลของตาราง
+        <ion-icon name="md-arrow-dropup"></ion-icon>
+      </ion-label>
+      <ion-label *ngIf="check == false" (click)="testShowParty()">การแสดงผลของตาราง
+        <ion-icon name="md-arrow-dropdown"></ion-icon>
+      </ion-label>
     </ion-row>
 
   </div>
