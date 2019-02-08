@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { PartyScore, FilterArea } from '../../app/model';
+import { PartyScore, FilterArea, GlobalVaraible } from '../../app/model';
 
 @Component({
   selector: 'page-home',
@@ -15,7 +15,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public http: HttpClient) {
 
-    this.http.get<PartyScore[]>("https://electionvars.azurewebsites.net/api/ElectionV2/GetAllPartyScore")
+    this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
       .subscribe(data => {
         this.listScoreAll = data;
         this.listScore = this.listScoreAll;
