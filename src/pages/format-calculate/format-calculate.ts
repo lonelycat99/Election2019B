@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AreaData } from '../../app/model';
+import { AreaData, ScoreArea } from '../../app/model';
 import { FormatCalculateDetailPage } from '../format-calculate-detail/format-calculate-detail';
 import { HttpClient } from '@angular/common/http';
 
@@ -20,7 +20,7 @@ export class FormatCalculatePage {
 
   // listArea: testArea[];
   listProvice: string[];
-  listArea: AreaData[];
+  listArea: ScoreArea[];
   status: boolean[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     this.status = [true, true]
