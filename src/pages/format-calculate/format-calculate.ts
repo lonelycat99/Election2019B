@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { testArea, LocationModel, GlobalVaraible, AreaData } from '../../app/model';
+import { AreaData } from '../../app/model';
 import { FormatCalculateDetailPage } from '../format-calculate-detail/format-calculate-detail';
 import { HttpClient } from '@angular/common/http';
 

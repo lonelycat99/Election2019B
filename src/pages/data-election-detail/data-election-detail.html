@@ -46,7 +46,7 @@
         ผลสรุปรวม
       </ion-col>
     </ion-row>
-    <ion-row class="bgTabalcol1">
+    <ion-row class="bgTabalcol1" text-left>
       <ion-col col-4>
         พรรค
       </ion-col>
@@ -55,29 +55,29 @@
       </ion-col>
       <ion-col col-1 text-right>
       </ion-col>
-      <ion-col col-1>
+      <ion-col col-2>
         คะแนน
       </ion-col>
-      <ion-col col-2>
+      <ion-col col-1>
       </ion-col>
     </ion-row>
-    <ion-row class="bgTabalcolxx">
-      <ion-col col-4>
-        อนาคตใหม่
+    <ion-row *ngFor="let data of items" class="bgTabalcol2 bgTabalcolxx">
+      <ion-col col-4 text-left>
+        {{data.nameParty}}
       </ion-col>
-      <ion-col col-4>
-        นาย ข.
+      <ion-col col-4 text-left>
+        {{data.nameRegister}}
       </ion-col>
       <ion-col col-1 text-right>
       </ion-col>
-      <ion-col col-1>
-        7000
+      <ion-col col-2 text-left>
+        {{data.score | number}}
       </ion-col>
-      <ion-col col-2>
+      <ion-col col-1 text-left>
         แก้ไข
       </ion-col>
     </ion-row>
-    <ion-row class="bgTabalcol1">
+    <!-- <ion-row class="bgTabalcol1">
       <ion-col col-4>
         เสรีรวมไทย
       </ion-col>
@@ -123,7 +123,7 @@
       </ion-col>
       <ion-col col-2>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
   </ion-grid>
 
 </ion-content>
