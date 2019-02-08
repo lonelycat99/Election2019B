@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AreaData, ScoreArea } from '../../app/model';
+import { AreaData, ScoreArea, GlobalVaraible } from '../../app/model';
 import { FormatCalculateDetailPage } from '../format-calculate-detail/format-calculate-detail';
 import { HttpClient } from '@angular/common/http';
 
@@ -18,19 +18,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FormatCalculatePage {
 
-  // listArea: testArea[];
-  listProvice: string[];
   listArea: ScoreArea[];
-  status: boolean[];
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
-    this.status = [true, true]
-    this.http.get<string[]>("https://electionvars.azurewebsites.net/api/Election/GetAreaAll")
+    this.http.get<ScoreArea[]>("http://localhost:5000/api/ElectionV3/GetAllArea")
       .subscribe(data => {
-        this.listProvice = data;
-        for (var i = 0; i < this.listProvice.length; i++) {
-          this.status[i] = true;
-        }
-        console.log(this.listProvice);
+        this.listArea = data;
+        console.log(this.listArea);
       });
   }
 
@@ -43,24 +37,7 @@ export class FormatCalculatePage {
 
   }
 
-  showDetailArea(index: number, nameArea: string) {
-    if (this.status[index] == true) {
-      this.status[index] = false;
-    }
-    else {
-      this.status[index] = true;
-    }
-    this.http.get<AreaData[]>("https://electionvars.azurewebsites.net/api/Election/GetDistrictAll/" + nameArea)
-      .subscribe(data => {
-        this.listArea = data;
-        console.log(this.listArea);
-      });
+  GoCalculate(idArea: string) {
+    this.navCtrl.push(FormatCalculateDetailPage, { _idArea: idArea })
   }
-
-  GoCalculate(subdistrict) {
-    this.navCtrl.push(FormatCalculateDetailPage, {
-      data: subdistrict
-    })
-  }
-
 }
