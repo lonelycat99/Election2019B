@@ -36,7 +36,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row margin *ngFor="let data of listScorePoll">
+  <ion-row margin *ngFor="let data of listScorePoll2">
     <ion-col col-3 text-left align-self-center>
       <ion-label>
         {{data.nameParty}}
@@ -44,7 +44,8 @@
     </ion-col>
     <ion-col col-3 align-self-center>
       <ion-item>
-        <ion-input type="number" step="0.00" [(ngModel)]="data.percentScore"   text-center></ion-input>
+        <!-- [(ngModel)]="data.percentScore"  -->
+        <ion-input type="number" text-center [(ngModel)]="data.percentScore" ></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-1 align-self-center>

@@ -19,7 +19,9 @@ export class FormatCalculateDetailPage {
 
   idArea: string;
   listScorePoll: ScorePoll[];
+  listScorePoll2: ScorePoll[] = [];
   nameArea: string;
+  percen: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public http: HttpClient) {
     this.idArea = this.navParams.get('_idArea');
     this.nameArea = this.navParams.get('_nameArea');
@@ -27,11 +29,18 @@ export class FormatCalculateDetailPage {
     console.log(this.nameArea);
     this.http.get<ScorePoll[]>(GlobalVaraible.host + "GetAreaScorePoll/" + this.idArea)
       .subscribe(data => {
-        this.listScorePoll = data;
+        this.listScorePoll = data
         this.listScorePoll.forEach(data => {
           this.nameArea = data.nameArea
+          this.percen = data.percentScore.toFixed(2);
+          this.listScorePoll2.push({
+            id: data.id, idParty: data.idParty, idArea: data.idArea,
+            nameArea: data.nameArea, nameParty: data.nameParty, datePoll: data.datePoll, score: data.score,
+            percentScore: this.percen, source: data.source, targetScore: data.targetScore,
+            targetScoreDefault: data.targetScoreDefault
+          })
         });
-        console.log(this.listScorePoll);
+        console.log(this.listScorePoll2);
       });
   }
 
@@ -42,5 +51,4 @@ export class FormatCalculateDetailPage {
     const modal = this.modalCtrl.create("CreatepartyPage");
     modal.present();
   }
-
 }
