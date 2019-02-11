@@ -32,7 +32,7 @@ export class EditscorePage {
 
   }
   submit() {
-    this.http.post("https://electionvars.azurewebsites.net/api/ElectionV3/Edititem/" + this.id, {
+    this.http.post("https://electionvars.azurewebsites.net/api/ElectionV3/EditScore/" + this.id, {
       "score": this.mymodel.score
     }).subscribe(data => {
       this.viewCtrl.dismiss(data);
