@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the UploadFilePage page.
@@ -15,7 +16,9 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class UploadFilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  formData:FormData = new FormData();
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient,
     public alertController: AlertController) {
   }
 
@@ -34,5 +37,31 @@ export class UploadFilePage {
       ]
     });
     confirm.present();
+  }
+
+  onSubmit(){
+    //http://localhost:49598/api/ElectionV3/File
+    this.http.post("http://localhost:49598/api/ElectionV3/File",this.formData).subscribe(data => {
+    });
+  }
+
+  setFile(event) {
+    let files = event.srcElement.files
+    if (!files) {
+      return;
+    }
+
+    let data = {"patientData": {
+      "uid": "",
+      "firstName": "",
+      "lastName": "",
+      "gender": "Not Specified",
+      "dateOfBirth": ""
+    }};
+
+    for (let i = 0; i < files.length; i++) {
+      this.formData.append(i.toString(), files[i], files[i].name);
+    }
+    this.formData.append("data", JSON.stringify(data));
   }
 }
