@@ -27,17 +27,21 @@
   </ion-row>
 
   <ion-item no-lines>
-    <ion-label>ดาวโหลดTemplates <a href="https://drive.google.com/uc?id=1PqdUxKixB3UZdFV1VaRuzTTxhix1O_iz&export=download">คลิ๊กที่นี้</a></ion-label>
-  </ion-item>
-<form (ngSubmit)="onSubmit()" #loginForm="ngForm" enctype="multipart/form-data">
-  <ion-item no-lines>
-    <input type="file" [(ngModel)]="data" name="data" (change)="setFile($event)" multiple />
+    <ion-label>ดาวโหลดTemplates <a
+        href="https://drive.google.com/uc?id=1PqdUxKixB3UZdFV1VaRuzTTxhix1O_iz&export=download">คลิ๊กที่นี้</a>
+    </ion-label>
   </ion-item>
 
-  <ion-row padding>
-    <ion-col col-1>
-      <button ion-button block color="green" type="submit">อัปโหลดคะแนน</button>
-    </ion-col>
-  </ion-row>
-</form>
+  <form (ngSubmit)="onSubmit()">
+    <ion-item no-lines>
+      <input type="file" (change)="setFile($event)"/>
+    </ion-item>
+
+    <ion-row padding>
+      <ion-col col-1>
+        <button ion-button block color="green" type="submit">อัปโหลดคะแนน</button>
+      </ion-col>
+    </ion-row>
+  </form>
+
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { GlobalVaraible } from '../../app/model';
 
 /**
  * Generated class for the UploadFilePage page.
@@ -16,7 +17,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UploadFilePage {
 
-  formData:FormData = new FormData();
+  formData: FormData;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient,
     public alertController: AlertController) {
@@ -26,42 +27,29 @@ export class UploadFilePage {
     console.log('ionViewDidLoad UploadFilePage');
   }
 
-  showAlert() {
-    const confirm = this.alertController.create({
-      title: 'อัปโหลดคะแนนสำเร็จ',
-      buttons: [
-        {
-          text: 'OK',
-          handler: () => {}
-        }
-      ]
-    });
-    confirm.present();
-  }
-
-  onSubmit(){
+  onSubmit() {
     //http://localhost:49598/api/ElectionV3/File
-    this.http.post("http://localhost:49598/api/ElectionV3/File",this.formData).subscribe(data => {
+    this.http.post("http://localhost:5000/api/ElectionV3/UploadFile", this.formData).subscribe(data => {
+      const confirm = this.alertController.create({
+        title: 'อัปโหลดคะแนนสำเร็จ',
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => { }
+          }
+        ]
+      });
+      confirm.present();
     });
   }
 
   setFile(event) {
     let files = event.srcElement.files
-    if (!files) {
-      return;
+    if (files) {
+      this.formData = new FormData()
+      for (let i = 0; i < files.length; i++) {
+        this.formData.append(i.toString(), files[i], files[i].name);
+      }
     }
-
-    let data = {"patientData": {
-      "uid": "",
-      "firstName": "",
-      "lastName": "",
-      "gender": "Not Specified",
-      "dateOfBirth": ""
-    }};
-
-    for (let i = 0; i < files.length; i++) {
-      this.formData.append(i.toString(), files[i], files[i].name);
-    }
-    this.formData.append("data", JSON.stringify(data));
   }
 }

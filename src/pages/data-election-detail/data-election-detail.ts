@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import * as pbi from 'powerbi-client';
 import { models, IEmbedConfiguration } from 'powerbi-client';
 import { HttpClient } from '@angular/common/http';
-import { ScoreArea } from '../../app/model';
+import { ScoreArea, GlobalVaraible } from '../../app/model';
 import { EditscorePage } from '../editscore/editscore';
 /**
  * Generated class for the DataElectionDetailPage page.
@@ -47,7 +47,7 @@ export class DataElectionDetailPage {
   }
   ionViewLeave() {
     console.log('ionView9999999');
-    this.http.get<ScoreArea[]>("https://electionvars.azurewebsites.net/api/ElectionV3/GetScoreAreasWithArea/" + this.idarea).subscribe(
+    this.http.get<ScoreArea[]>(GlobalVaraible.host + "GetScoreAreasWithArea/" + this.idarea).subscribe(
       it => {
         this.items = it
         console.log(it);

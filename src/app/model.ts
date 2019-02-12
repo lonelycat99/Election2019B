@@ -8,6 +8,7 @@ export class PartyScore {
     areaScore: number;
     nameListScore: number;
     percentScore: number;
+    isChecked: boolean;
 }
 
 export class FilterArea {
