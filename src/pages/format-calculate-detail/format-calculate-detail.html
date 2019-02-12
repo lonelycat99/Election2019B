@@ -45,7 +45,10 @@
     <ion-col col-3 align-self-center>
       <ion-item>
         <!-- [(ngModel)]="data.percentScore"  -->
-        <ion-input type="number" text-center [(ngModel)]="data.percentScore" ></ion-input>
+      <ion-label>
+        {{data.percentScore}}
+      </ion-label>
+        <!-- <ion-input type="number" text-center [(ngModel)]="data.percentScore" ></ion-input> -->
       </ion-item>
     </ion-col>
     <ion-col col-1 align-self-center>
