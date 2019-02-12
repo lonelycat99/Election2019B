@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { PartyScore, FilterArea, GlobalVaraible } from '../../app/model';
+import { PartyScore, FilterArea, GlobalVaraible, ScoreOther } from '../../app/model';
 
 @Component({
   selector: 'page-home',
@@ -10,52 +10,51 @@ import { PartyScore, FilterArea, GlobalVaraible } from '../../app/model';
 export class HomePage {
 
   listScoreAll: PartyScore[];
-  listScore: PartyScore[];
-  listFilter: FilterArea[] = [];
-  listFirst4: any = []
-  listTotal: any = []
-  check: boolean = false
-
+  listScore: PartyScore[] = [];
+  listShowScore: PartyScore[] = [];
+  listScoreOther: PartyScore[] = [];
+  otherScore: ScoreOther = new ScoreOther;
+  checkShowMoreParty: boolean = false
 
   constructor(public navCtrl: NavController, public http: HttpClient) {
 
     this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
       .subscribe(data => {
         this.listScoreAll = data;
-        this.listScore = this.listScoreAll;
         this.listScoreAll.forEach(data => {
-          this.listFilter.push({ name: data.partyName, isChecked: false })
+          data.isChecked = true;
+          this.listScore.push(data);
         });
+        this.listShowScore = this.listScore;
+        this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: false };
         console.log(this.listScore);
-        this.listTotal = this.listFilter;
-        console.log(this.listTotal)
-        for (let i = 0; i <= 3; i++) {
-          this.listFirst4[i] = this.listFilter[i]
-        };
       });
   }
-  testShowParty() {
-    if (this.check == false) {
-      this.check = true
-    }else{
-      this.check = false
+
+  ShowMoreParty() {
+    if (this.checkShowMoreParty == false) {
+      this.checkShowMoreParty = true
+    } else {
+      this.checkShowMoreParty = false
     }
   }
 
   checkFilter() {
-    this.listScore = [];
-    var checkFilter = this.listFilter.every(it => it.isChecked == false);
-    if (checkFilter) {
-      this.listScore = this.listScoreAll;
-    }
-    else {
-      this.listFilter.forEach(data => {
-        if (data.isChecked == true) {
-          let party = this.listScoreAll.find(it => it.partyName == data.name);
-          this.listScore.push(party);
-        }
+    this.listShowScore = this.listScore.filter(it => it.isChecked);
+    this.listScoreOther = this.listScore.filter(it => !it.isChecked);
+    if (this.listScoreOther != [] && this.otherScore.isChecked) {
+      this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
+      this.listScoreOther.forEach(data => {
+        this.otherScore.score += data.totalScore;
+        this.otherScore.scoreArea += data.areaScore;
+        this.otherScore.scorePartyList += data.nameListScore;
+        this.otherScore.scorePercent += data.percentScore;
       });
     }
+    else {
+      this.otherScore.status = false;
+    }
+
   }
 
   showScoreAreaOfParty(idPart: string) {

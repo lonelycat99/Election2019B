@@ -28,7 +28,7 @@ export class UploadFilePage {
   }
 
   onSubmit() {
-    //http://localhost:49598/api/ElectionV3/File
+    //http://localhost:5000/api/ElectionV3/UploadFile
     this.http.post("http://localhost:5000/api/ElectionV3/UploadFile", this.formData).subscribe(data => {
       const confirm = this.alertController.create({
         title: 'อัปโหลดคะแนนสำเร็จ',
