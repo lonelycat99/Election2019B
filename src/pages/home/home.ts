@@ -25,7 +25,6 @@ export class HomePage {
           data.isChecked = true;
           this.listScore.push(data);
         });
-        this.listScore = this.listScoreAll;
         this.listShowScore = this.listScore;
         this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: false };
         console.log(this.listScore);
