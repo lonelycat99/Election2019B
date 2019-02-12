@@ -11,6 +11,7 @@ export class HomePage {
 
   listScoreAll: PartyScore[];
   listScore: PartyScore[] = [];
+  listShowScore: PartyScore[] = [];
   listScoreOther: PartyScore[] = [];
   otherScore: ScoreOther = new ScoreOther;
   checkShowMoreParty: boolean = false
@@ -24,7 +25,9 @@ export class HomePage {
           data.isChecked = true;
           this.listScore.push(data);
         });
-        this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true };
+        this.listScore = this.listScoreAll;
+        this.listShowScore = this.listScore;
+        this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: false };
         console.log(this.listScore);
       });
   }
@@ -38,16 +41,21 @@ export class HomePage {
   }
 
   checkFilter() {
-    this.listScore = this.listScore.filter(it => it.isChecked);
+    this.listShowScore = this.listScore.filter(it => it.isChecked);
     this.listScoreOther = this.listScore.filter(it => !it.isChecked);
-    let t = this.listScore.filter(it => it.isChecked == true)
-    this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true };
-    this.listScoreOther.forEach(data => {
-      this.otherScore.score += data.totalScore;
-      this.otherScore.scoreArea += data.areaScore;
-      this.otherScore.scorePartyList += data.nameListScore;
-      this.otherScore.scorePercent += data.percentScore;
-    });
+    if (this.listScoreOther != [] && this.otherScore.isChecked) {
+      this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
+      this.listScoreOther.forEach(data => {
+        this.otherScore.score += data.totalScore;
+        this.otherScore.scoreArea += data.areaScore;
+        this.otherScore.scorePartyList += data.nameListScore;
+        this.otherScore.scorePercent += data.percentScore;
+      });
+    }
+    else {
+      this.otherScore.status = false;
+    }
+
   }
 
   showScoreAreaOfParty(idPart: string) {

@@ -17,6 +17,7 @@ export class ScoreOther {
     scorePartyList: number;
     scorePercent: number;
     isChecked: boolean;
+    status: boolean;
 }
 
 export class FilterArea {

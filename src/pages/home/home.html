@@ -19,13 +19,13 @@
     </ion-col>
   </ion-row>
 
-  <ion-row class="background" (ionChange)="checkFilter()">
+  <ion-row class="background">
 
     <ion-col col-3 class="background" *ngFor="let data of listScore;let i = index">
       <div *ngIf="i < 4">
         <ion-item class="background" no-lines>
           <ion-label>{{data.partyName}}</ion-label>
-          <ion-checkbox color="danger" [(ngModel)]="data.isChecked"></ion-checkbox>
+          <ion-checkbox color="danger" [(ngModel)]="data.isChecked" (ionChange)="checkFilter()"></ion-checkbox>
         </ion-item>
       </div>
 
@@ -33,7 +33,7 @@
         <div *ngIf="checkShowMoreParty == true">
           <ion-item class="background" no-lines>
             <ion-label>{{data.partyName}}</ion-label>
-            <ion-checkbox color="danger" [(ngModel)]="data.isChecked"></ion-checkbox>
+            <ion-checkbox color="danger" [(ngModel)]="data.isChecked" (ionChange)="checkFilter()"></ion-checkbox>
           </ion-item>
         </div>
       </div>
@@ -44,7 +44,7 @@
     <ion-col col-3>
       <ion-item class="background" no-lines>
         <ion-label>อื่นๆ</ion-label>
-        <ion-checkbox color="danger" [(ngModel)]="otherScore.isChecked"></ion-checkbox>
+        <ion-checkbox color="danger" [(ngModel)]="otherScore.isChecked" (ionChange)="checkFilter()"></ion-checkbox>
       </ion-item>
     </ion-col>
   </ion-row>
@@ -83,7 +83,7 @@
     </ion-row>
 
 
-    <ion-row *ngFor="let scoreParty of listScore" class="bgTabalcol2 bgTabalcolxx">
+    <ion-row *ngFor="let scoreParty of listShowScore" class="bgTabalcol2 bgTabalcolxx">
       <ion-col text-center col-3>
         {{scoreParty.partyName}}
       </ion-col>
@@ -100,5 +100,24 @@
         {{scoreParty.percentScore | number:'1.2-2'}} %
       </ion-col>
     </ion-row>
+
+    <ion-row class="bgTabalcol2 bgTabalcolxx" *ngIf="otherScore.status">
+      <ion-col text-center col-3>
+        อื่นๆ
+      </ion-col>
+      <ion-col text-center col-2>
+        {{otherScore.score}}
+      </ion-col>
+      <ion-col text-center col-2 (click)="showScoreAreaOfParty(scoreParty.idParty)">
+        {{otherScore.scoreArea}}
+      </ion-col>
+      <ion-col text-center col-2>
+        {{otherScore.scorePartyList}}
+      </ion-col>
+      <ion-col text-center col-3>
+        {{otherScore.scorePercent | number:'1.2-2'}} %
+      </ion-col>
+    </ion-row>
+
   </div>
 </ion-content>
