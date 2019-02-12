@@ -11,6 +11,14 @@ export class PartyScore {
     isChecked: boolean;
 }
 
+export class ScoreOther {
+    score: number;
+    scoreArea: number;
+    scorePartyList: number;
+    scorePercent: number;
+    isChecked: boolean;
+}
+
 export class FilterArea {
     name: string;
     isChecked: boolean;
