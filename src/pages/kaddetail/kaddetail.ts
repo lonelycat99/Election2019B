@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PartyScore, GlobalVaraible, ScoreArea } from '../../app/model';
+import { GlobalVaraible, ScoreArea } from '../../app/model';
 import { HttpClient } from '@angular/common/http';
 
 /**
