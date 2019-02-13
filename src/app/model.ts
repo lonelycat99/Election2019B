@@ -11,6 +11,11 @@ export class PartyScore {
     isChecked: boolean;
 }
 
+export class otherScore {
+    name: string;
+    score: number;
+}
+
 export class ScoreOther {
     score: number;
     scoreArea: number;
@@ -38,6 +43,7 @@ export class ScoreArea {
     source: number;
     status: boolean;
     tags: string[];
+    statusEdit: boolean;
 }
 
 export class AreaData {
@@ -85,7 +91,7 @@ export class GetScoreParty {
     partyWin: string;
     scoreMax: number;
     scoreMyParty: number;
-    statusEdit :boolean;
+    statusEdit: boolean;
 }
 
 

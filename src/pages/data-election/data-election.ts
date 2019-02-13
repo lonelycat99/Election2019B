@@ -33,16 +33,15 @@ export class DataElectionPage {
 
       });
   }
-
-
+  
   initializeItems() {
     this.listFilter = this.listMyParty;
   }
 
   Godetail(nameArea, idArea) {
     this.navCtrl.push(DataElectionDetailPage, {
-      kadname: nameArea,
-      idarea: idArea
+      _nameArea: nameArea,
+      _idArea: idArea
     });
   }
 
@@ -60,10 +59,8 @@ export class DataElectionPage {
   getItems(ev) {
     // Reset items back to all of the items
     this.initializeItems();
-
     // set val to the value of the ev target
     var val = ev.target.value;
-
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.listFilter = this.listMyParty.filter((item) => {
