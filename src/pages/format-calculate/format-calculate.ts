@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AreaData, ScoreArea, GlobalVaraible } from '../../app/model';
+import { ScoreArea, GlobalVaraible } from '../../app/model';
 import { FormatCalculateDetailPage } from '../format-calculate-detail/format-calculate-detail';
 import { HttpClient } from '@angular/common/http';
 
@@ -19,13 +19,17 @@ import { HttpClient } from '@angular/common/http';
 export class FormatCalculatePage {
 
   listArea: ScoreArea[];
+  listfilter: ScoreArea[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
-    this.http.get<ScoreArea[]>(GlobalVaraible.host+"GetAllArea")
+    this.http.get<ScoreArea[]>(GlobalVaraible.host + "GetAllArea")
       .subscribe(data => {
         this.listArea = data;
+        this.listfilter = this.listArea;
         console.log(this.listArea);
       });
+    this.listfilter = this.listArea;
+    this.initializeItems();
   }
 
   ionViewDidLoad() {
@@ -39,5 +43,24 @@ export class FormatCalculatePage {
 
   GoCalculate(idArea: string) {
     this.navCtrl.push(FormatCalculateDetailPage, { _idArea: idArea })
+  }
+
+  initializeItems() {
+    this.listfilter = this.listArea;
+  }
+
+  getItems(ev) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.listfilter = this.listArea.filter((item) => {
+        return (item.nameArea.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
+    }
   }
 }

@@ -1,12 +1,9 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import * as pbi from 'powerbi-client';
-import { models, IEmbedConfiguration } from 'powerbi-client';
 import { HttpClient } from '@angular/common/http';
-import { ScoreArea, GlobalVaraible } from '../../app/model';
+import { ScoreArea } from '../../app/model';
 import { EditscorePage } from '../editscore/editscore';
 import { Chart } from 'chart.js';
-import { getValueFromFormat } from 'ionic-angular/umd/util/datetime-util';
 
 @IonicPage()
 @Component({

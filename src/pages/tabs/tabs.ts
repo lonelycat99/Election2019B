@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
 import { DataElectionPage } from '../data-election/data-election';
 import { FormatCalculatePage } from '../format-calculate/format-calculate';

@@ -40,7 +40,7 @@ export class DataElectionPage {
 
   initializeItems() {
     this.listMaxScore = this.items;
-  }
+  } 
 
   Godetail(token, nameArea, idArea) {
     token = this.tokenid

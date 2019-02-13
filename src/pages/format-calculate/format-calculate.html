@@ -11,7 +11,14 @@
 
 
 <ion-content padding>
-
+  <ion-row margin class="Seg2bg1">
+    <ion-col text-center col-2 class="text">
+      <ion-label>เขตการเลือกตั้ง</ion-label>
+    </ion-col>
+    <ion-col col-10 class="text">
+      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    </ion-col>
+  </ion-row>
   <ion-row margin class="background">
     <ion-col col-3>
       <ion-item class="background" no-lines>
@@ -20,8 +27,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row margin *ngFor="let areas of listArea" class="bgTabalcol2 bgTabalcolxx"
-    (click)="GoCalculate(areas.idArea)">
+  <ion-row margin *ngFor="let areas of listfilter" class="bgTabalcol2 bgTabalcolxx" (click)="GoCalculate(areas.idArea)">
     <ion-col col-11>
       {{areas.nameArea}}
     </ion-col>

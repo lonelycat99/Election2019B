@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { PartyScore, FilterArea, GlobalVaraible, ScoreOther } from '../../app/model';
+import { PartyScore, GlobalVaraible, ScoreOther } from '../../app/model';
 
 @Component({
   selector: 'page-home',
@@ -15,12 +15,14 @@ export class HomePage {
   listScoreOther: PartyScore[] = [];
   otherScore: ScoreOther = new ScoreOther;
   checkShowMoreParty: boolean = false
+  listfilter: PartyScore[];
 
   constructor(public navCtrl: NavController, public http: HttpClient) {
 
     this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
       .subscribe(data => {
         this.listScoreAll = data;
+        this.listfilter = this.listScoreAll;
         this.listScoreAll.forEach(data => {
           data.isChecked = true;
           this.listScore.push(data);
@@ -29,6 +31,8 @@ export class HomePage {
         this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: false };
         console.log(this.listScore);
       });
+    this.listfilter = this.listScoreAll;
+    this.initializeItems();
   }
 
   ShowMoreParty() {
@@ -65,4 +69,22 @@ export class HomePage {
     this.navCtrl.push("PartylistdetailPage");
   }
 
+  initializeItems() {
+    this.listfilter = this.listScoreAll;
+  }
+
+  getItems(ev) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.listfilter = this.listScoreAll.filter((item) => {
+        return (item.partyName.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
+    }
+  }
 }
