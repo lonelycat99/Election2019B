@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { ScoreArea } from '../../app/model';
+import { ScoreArea, GlobalVaraible, GetScoreParty } from '../../app/model';
 import { DataElectionDetailPage } from '../data-election-detail/data-election-detail';
 import { EditscorePage } from '../editscore/editscore';
 
@@ -14,38 +14,33 @@ import { EditscorePage } from '../editscore/editscore';
 export class DataElectionPage {
 
   colorRow: string;
-  listMaxScore: ScoreArea[];
-  items: ScoreArea[];
+  listMyParty: GetScoreParty[];
+  listFilter: GetScoreParty[];
   tokenid: any = {};
   namekad: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController) {
-
-    this.http.get("http://pbiebeded.azurewebsites.net/api/values/gettoken/50ffda63-4985-4fdf-b052-c78cee9263ff/00308657-8890-471b-83c7-14169c8d8d3f").subscribe(
-      it => {
-        this.tokenid = it
-      }
-    );
-
-    this.listMaxScore = this.items;
     this.initializeItems();
   }
   ionViewDidEnter() {
-    this.http.get<ScoreArea[]>("https://electionvars.azurewebsites.net/api/ElectionV3/GetAllAreaMaxScore")
+    // "https://electionvars.azurewebsites.net/api/ElectionV3/GetAllAreaMaxScore"
+    // "http://localhost:5000/api/ElectionV3/GetScoreMyParty"
+    // GlobalVaraible.host + "GetScoreMyParty"
+    this.http.get<GetScoreParty[]>("http://localhost:5000/api/ElectionV3/GetMaxScoreAndMyScore")
       .subscribe(data => {
-        this.items = data;
-        this.listMaxScore = this.items;
+        this.listMyParty = data;
+        this.listFilter = this.listMyParty;
+        console.log(this.listMyParty);
+
       });
   }
 
 
   initializeItems() {
-    this.listMaxScore = this.items;
+    this.listFilter = this.listMyParty;
   }
 
-  Godetail(token, nameArea, idArea) {
-    token = this.tokenid
+  Godetail(nameArea, idArea) {
     this.navCtrl.push(DataElectionDetailPage, {
-      idtoken: token,
       kadname: nameArea,
       idarea: idArea
     });
@@ -71,7 +66,7 @@ export class DataElectionPage {
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this.listMaxScore = this.items.filter((item) => {
+      this.listFilter = this.listMyParty.filter((item) => {
         return (item.nameArea.toLowerCase().indexOf(val.toLowerCase()) > -1);
       });
     }

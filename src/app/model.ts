@@ -78,6 +78,16 @@ export class ScorePoll {
     targetScore: number;
 }
 
+export class GetScoreParty {
+    id: string;
+    idArea: string;
+    nameArea: string;
+    partyWin: string;
+    scoreMax: number;
+    scoreMyParty: number;
+    statusEdit :boolean;
+}
+
 
 export class GlobalVaraible {
     static host: string = "https://electionvars.azurewebsites.net/api/ElectionV3/";
