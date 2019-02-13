@@ -18,7 +18,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { DataElectionDetailPage } from '../pages/data-election-detail/data-election-detail';
 import { EditscorePage } from '../pages/editscore/editscore';
 import { UploadFilePage } from '../pages/upload-file/upload-file';
-
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     MyApp,
@@ -37,7 +37,8 @@ import { UploadFilePage } from '../pages/upload-file/upload-file';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
