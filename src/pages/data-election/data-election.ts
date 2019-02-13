@@ -25,12 +25,11 @@ export class DataElectionPage {
     // "https://electionvars.azurewebsites.net/api/ElectionV3/GetAllAreaMaxScore"
     // "http://localhost:5000/api/ElectionV3/GetScoreMyParty"
     // GlobalVaraible.host + "GetScoreMyParty"
-    this.http.get<GetScoreParty[]>("http://localhost:5000/api/ElectionV3/GetMaxScoreAndMyScore")
+    this.http.get<GetScoreParty[]>(GlobalVaraible.host + "GetMaxScoreAndMyScore")
       .subscribe(data => {
         this.listMyParty = data;
         this.listFilter = this.listMyParty;
         console.log(this.listMyParty);
-
       });
   }
   

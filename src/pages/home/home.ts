@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { PartyScore, GlobalVaraible, ScoreOther } from '../../app/model';
 
@@ -17,7 +17,7 @@ export class HomePage {
   checkShowMoreParty: boolean = false
   listfilter: PartyScore[];
 
-  constructor(public navCtrl: NavController, public http: HttpClient) {
+  constructor(public navCtrl: NavController, public http: HttpClient, public alertController: AlertController) {
 
     this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
       .subscribe(data => {
@@ -59,6 +59,28 @@ export class HomePage {
       this.otherScore.status = false;
     }
 
+  }
+
+  SendResultScore() {
+    let option = { "headers": { "Content-Type": "application/json" } };
+    this.http.post(GlobalVaraible.host + "UpdatePartyScore", option)
+      .subscribe(data => {
+        const confirm = this.alertController.create({
+          title: 'อัปโหลดคะแนนสำเร็จ',
+          buttons: [
+            {
+              text: 'OK',
+              handler: () => {
+                this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
+                  .subscribe(data => {
+                    this.listShowScore = data;
+                  });
+              }
+            }
+          ]
+        });
+        confirm.present();
+      });
   }
 
   showScoreAreaOfParty(idPart: string) {

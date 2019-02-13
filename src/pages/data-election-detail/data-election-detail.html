@@ -60,15 +60,15 @@
       </ion-col>
     </ion-row>
     <ion-row class="bgTabalcol1" text-left>
-      <ion-col col-4>
+      <ion-col col-1>
+      </ion-col>
+      <ion-col text-center col-4>
         พรรค
       </ion-col>
-      <ion-col col-4>
+      <ion-col text-center col-4>
         ผู้สมัคร
       </ion-col>
-      <ion-col col-1 text-right>
-      </ion-col>
-      <ion-col col-2>
+      <ion-col text-center col-2>
         คะแนน
       </ion-col>
       <ion-col col-1>
@@ -76,85 +76,41 @@
     </ion-row>
     <div *ngFor="let data of listScoreParty;let i = index" class="bgTabalcol2 bgTabalcolxx">
       <ion-row *ngIf="i < 5">
-        <ion-col col-4 text-left>
+        <ion-col col-1 text-left align-self-center>
+          <div *ngIf="data.statusEdit" margin>
+            <img src="../../assets/imgs/pencil-on-a-notes-paper4.png">
+          </div>
+        </ion-col>
+        <ion-col col-4 text-center align-self-center>
           {{data.nameParty}}
         </ion-col>
-        <ion-col col-4 text-left>
+        <ion-col col-4 text-center align-self-center>
           {{data.nameRegister}}
         </ion-col>
-        <ion-col col-1 text-right>
-        </ion-col>
-        <ion-col col-2 text-left>
+        <ion-col col-2 text-center align-self-center>
           {{data.score | number}}
         </ion-col>
-        <ion-col col-1 text-left (click)="Editdata(data)">
+        <ion-col col-1 text-center align-self-center (click)="Editdata(data)">
           แก้ไข
         </ion-col>
       </ion-row>
     </div>
 
-    <ion-row class="bgTabalcol2 bgTabalcolxx">
-      <ion-col col-4 text-left>
+    <ion-row class="bgTabalcol2">
+      <ion-col col-1 text-center>
+      </ion-col>
+      <ion-col col-4 text-center>
         {{other.name}}
       </ion-col>
-      <ion-col col-4 text-left>
-
+      <ion-col col-4 text-center>
       </ion-col>
-      <ion-col col-1 text-right>
-      </ion-col>
-      <ion-col col-2 text-left>
+      <ion-col col-2 text-center>
         {{other.score | number}}
       </ion-col>
-      <ion-col col-1 text-left>
+      <ion-col col-1 text-center>
       </ion-col>
     </ion-row>
-    <!-- <ion-row class="bgTabalcol1">
-      <ion-col col-4>
-        เสรีรวมไทย
-      </ion-col>
-      <ion-col col-4>
-        นาย ค.
-      </ion-col>
-      <ion-col col-1 text-right>
-      </ion-col>
-      <ion-col col-1>
-        5000
-      </ion-col>
-      <ion-col col-2>
-        แก้ไข
-      </ion-col>
-    </ion-row>
-    <ion-row class="bgTabalcolxx">
-      <ion-col col-4>
-        เพื่อไทย
-      </ion-col>
-      <ion-col col-4>
-        นาย ก.
-      </ion-col>
-      <ion-col col-1 text-right>
-        <ion-icon name="ios-create-outline" style="background: orange "></ion-icon>
-      </ion-col>
-      <ion-col col-1>
-        10000
-      </ion-col>
-      <ion-col col-2>
-        แก้ไข
-      </ion-col>
-    </ion-row>
-    <ion-row class="bgTabalcol1">
-      <ion-col col-4>
-        อื่น ๆ
-      </ion-col>
-      <ion-col col-4>
-      </ion-col>
-      <ion-col col-1>
-      </ion-col>
-      <ion-col col-1>
-        5000
-      </ion-col>
-      <ion-col col-2>
-      </ion-col>
-    </ion-row> -->
+  
   </ion-grid>
 
 </ion-content>

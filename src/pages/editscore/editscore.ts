@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { ScoreArea } from '../../app/model';
+import { ScoreArea, GlobalVaraible } from '../../app/model';
 
 /**
  * Generated class for the EditscorePage page.
@@ -24,8 +24,7 @@ export class EditscorePage {
     // https://electionvars.azurewebsites.net/api/ElectionV3/Edititem/Edititem?id=
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditscorePage');
+  ionViewDidEnter() {
     this.getScoreParty = this.navParams.get('_dataScore');
     console.log(this.getScoreParty);
   }
@@ -33,10 +32,9 @@ export class EditscorePage {
     // "https://electionvars.azurewebsites.net/api/ElectionV3/GetAllAreaMaxScore"
     // "http://localhost:5000/api/ElectionV3/GetScoreMyParty"
     // GlobalVaraible.host + "GetScoreMyParty"
-
-    this.http.post("http://localhost:5000/api/ElectionV3/EditScore/" + this.getScoreParty.id, {
-      "score": this.mymodel.score
-    }).subscribe(data => {
+    this.http.post(GlobalVaraible.host + "EditScore/" + this.getScoreParty.id,
+      this.getScoreParty
+    ).subscribe(data => {
       this.viewCtrl.dismiss(data);
     });
 
