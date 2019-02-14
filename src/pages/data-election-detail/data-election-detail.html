@@ -60,15 +60,15 @@
       </ion-col>
     </ion-row>
     <ion-row class="bgTabalcol1" text-left>
-      <ion-col col-1>
-      </ion-col>
       <ion-col text-center col-4>
         พรรค
       </ion-col>
       <ion-col text-center col-4>
         ผู้สมัคร
       </ion-col>
-      <ion-col text-center col-2>
+      <ion-col col-1>
+      </ion-col>
+      <ion-col text-left col-2>
         คะแนน
       </ion-col>
       <ion-col col-1>
@@ -76,18 +76,18 @@
     </ion-row>
     <div *ngFor="let data of listScoreParty;let i = index" class="bgTabalcol2 bgTabalcolxx">
       <ion-row *ngIf="i < 5">
-        <ion-col col-1 text-left align-self-center>
-          <div *ngIf="data.statusEdit" margin>
-            <img src="../../assets/imgs/pencil-on-a-notes-paper4.png">
-          </div>
-        </ion-col>
         <ion-col col-4 text-center align-self-center>
           {{data.nameParty}}
         </ion-col>
         <ion-col col-4 text-center align-self-center>
           {{data.nameRegister}}
         </ion-col>
-        <ion-col col-2 text-center align-self-center>
+        <ion-col col-1 text-right align-self-center>
+          <div *ngIf="data.statusEdit" margin>
+            <img src="../../assets/imgs/pencil-on-a-notes-paper4.png">
+          </div>
+        </ion-col>
+        <ion-col col-2 text-left align-self-center>
           {{data.score | number}}
         </ion-col>
         <ion-col col-1 text-center align-self-center (click)="Editdata(data)">
@@ -97,20 +97,20 @@
     </div>
 
     <ion-row class="bgTabalcol2">
-      <ion-col col-1 text-center>
-      </ion-col>
       <ion-col col-4 text-center>
         {{other.name}}
       </ion-col>
       <ion-col col-4 text-center>
       </ion-col>
-      <ion-col col-2 text-center>
+      <ion-col col-1 text-center>
+      </ion-col>
+      <ion-col col-2 text-left>
         {{other.score | number}}
       </ion-col>
       <ion-col col-1 text-center>
       </ion-col>
     </ion-row>
-  
+
   </ion-grid>
 
 </ion-content>
