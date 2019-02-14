@@ -17,7 +17,7 @@ import { ScoreArea, GlobalVaraible } from '../../app/model';
 })
 export class EditscorePage {
   getScoreParty: ScoreArea = new ScoreArea;
-  mymodel: any = {};
+  newScore: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public viewCtrl: ViewController) {
 
@@ -32,12 +32,11 @@ export class EditscorePage {
     // "https://electionvars.azurewebsites.net/api/ElectionV3/GetAllAreaMaxScore"
     // "http://localhost:5000/api/ElectionV3/GetScoreMyParty"
     // GlobalVaraible.host + "GetScoreMyParty"
-    this.http.post(GlobalVaraible.host + "EditScore/" + this.getScoreParty.id, {
-      "score": this.mymodel.score
-    }
-    ).subscribe(data => {
-      this.viewCtrl.dismiss(data);
-    });
+    this.getScoreParty.score = this.newScore;
+    this.http.post(GlobalVaraible.host + "EditScore/" + this.getScoreParty.id, this.getScoreParty)
+      .subscribe(data => {
+        this.viewCtrl.dismiss(data);
+      });
 
   }
 }
