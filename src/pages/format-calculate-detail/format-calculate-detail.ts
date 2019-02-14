@@ -27,6 +27,14 @@ export class FormatCalculateDetailPage {
     this.nameArea = this.navParams.get('_nameArea');
     console.log(this.idArea);
     console.log(this.nameArea);
+
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad FormatCalculateDetailPage');
+  }
+
+  ionViewDidEnter() {
     this.http.get<ScorePoll[]>(GlobalVaraible.host + "GetAreaScorePoll/" + this.idArea)
       .subscribe(data => {
         this.listScorePoll = data
@@ -42,10 +50,6 @@ export class FormatCalculateDetailPage {
         });
         console.log(this.listScorePoll2);
       });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FormatCalculateDetailPage');
   }
   createparty() {
     const modal = this.modalCtrl.create("CreatepartyPage");
