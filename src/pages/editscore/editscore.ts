@@ -32,8 +32,9 @@ export class EditscorePage {
     // "https://electionvars.azurewebsites.net/api/ElectionV3/GetAllAreaMaxScore"
     // "http://localhost:5000/api/ElectionV3/GetScoreMyParty"
     // GlobalVaraible.host + "GetScoreMyParty"
-    this.http.post(GlobalVaraible.host + "EditScore/" + this.getScoreParty.id,
-      this.getScoreParty
+    this.http.post(GlobalVaraible.host + "EditScore/" + this.getScoreParty.id, {
+      "score": this.mymodel.score
+    }
     ).subscribe(data => {
       this.viewCtrl.dismiss(data);
     });
