@@ -16,7 +16,7 @@ export class DataElectionDetailPage {
   nameArea: string;
   listScoreParty: ScoreArea[];
   listScorePartyChart: ScoreArea[] = [];
-  listOther: ScoreArea[] = [];
+  listOther: ScoreArea[];
   other: otherScore = new otherScore;
   chart: [any];
   @ViewChild('barCanvas') barCanvas;
@@ -34,31 +34,20 @@ export class DataElectionDetailPage {
     this.http.get<ScoreArea[]>(GlobalVaraible.host + "GetScoreAreasWithArea/" + this.idArea).subscribe(
       data => {
         this.listScoreParty = data;
-        for (let i = 0; i < this.listScoreParty.length; i++) {
-          if (i >= 5) {
-            this.listOther.push({
-              id: this.listScoreParty[i].id,
-              idArea: this.listScoreParty[i].idArea,
-              idParty: this.listScoreParty[i].idParty,
-              nameArea: this.listScoreParty[i].nameArea,
-              nameInitial: this.listScoreParty[i].nameInitial,
-              nameParty: this.listScoreParty[i].nameParty,
-              nameRegister: this.listScoreParty[i].nameRegister,
-              noRegister: this.listScoreParty[i].noRegister,
-              score: this.listScoreParty[i].score,
-              source: this.listScoreParty[i].score,
-              status: this.listScoreParty[i].status,
-              tags: this.listScoreParty[i].tags,
-              statusEdit: this.listScoreParty[i].statusEdit,
-              statusAreaEdit: this.listScoreParty[i].statusAreaEdit
-            });
+        let count = 0;
+        this.listOther = [];
+        this.listScoreParty.forEach(data => {
+          if (count > 4) {
+            this.listOther.push(data);
           }
-        }
-
+          count += 1;
+        });
         this.other = { name: "อื่นๆ", score: 0 };
+        // this.other = { name: "อื่นๆ", score: 0 };
         this.listOther.forEach(data => {
           this.other.score += data.score;
         });
+
         this.chart = new Chart(this.barCanvas.nativeElement, {
           type: 'bar',
           data: {

@@ -30,10 +30,9 @@ export class EditscorePage {
   }
   submit() {
     // "https://electionvars.azurewebsites.net/api/ElectionV3/GetAllAreaMaxScore"
-    // "http://localhost:5000/api/ElectionV3/GetScoreMyParty"
-    // GlobalVaraible.host + "GetScoreMyParty"
-    this.getScoreParty.score = this.newScore;
-    this.http.post(GlobalVaraible.host + "EditScore/" + this.getScoreParty.id, this.getScoreParty)
+    // "http://localhost:5000/api/ElectionV3/EditScore/"
+    // GlobalVaraible.host + "EditScore/"
+    this.http.post(GlobalVaraible.host + "EditScore/" + this.newScore, this.getScoreParty)
       .subscribe(data => {
         this.viewCtrl.dismiss(data);
       });

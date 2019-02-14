@@ -18,21 +18,43 @@ export class HomePage {
   listfilter: PartyScore[];
 
   constructor(public navCtrl: NavController, public http: HttpClient, public alertController: AlertController) {
-
-    this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
+    // this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
+    //   .subscribe(data => {
+    //     this.listScoreAll = data;
+    //     this.listfilter = this.listScoreAll;
+    //     this.listScoreAll.forEach(data => {
+    //       data.isChecked = true;
+    //       this.listScore.push(data);
+    //     });
+    //     this.listShowScore = this.listScore;
+    //     this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
+    //     console.log(this.listScore);
+    //   });
+    // this.listfilter = this.listScoreAll;
+  }
+  ionViewDidEnter() {
+    // "http://localhost:5000/api/ElectionV3/UploadFile"
+    // GlobalVaraible.host + "GetAllPartyScore"
+    this.listShowScore = [];
+    this.listScoreAll = [];
+    this.listfilter = [];
+    this.listScore = [];
+    this.http.post(GlobalVaraible.host + "UpdatePartyScore", null)
       .subscribe(data => {
-        this.listScoreAll = data;
+        this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
+          .subscribe(data => {
+            this.listScoreAll = data;
+            this.listfilter = this.listScoreAll;
+            this.listScoreAll.forEach(data => {
+              data.isChecked = true;
+              this.listScore.push(data);
+            });
+            this.listShowScore = this.listScore;
+            this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
+            console.log(this.listScore);
+          });
         this.listfilter = this.listScoreAll;
-        this.listScoreAll.forEach(data => {
-          data.isChecked = true;
-          this.listScore.push(data);
-        });
-        this.listShowScore = this.listScore;
-        this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: false };
-        console.log(this.listScore);
       });
-    this.listfilter = this.listScoreAll;
-    this.initializeItems();
   }
 
   ShowMoreParty() {
@@ -46,7 +68,7 @@ export class HomePage {
   checkFilter() {
     this.listShowScore = this.listScore.filter(it => it.isChecked);
     this.listScoreOther = this.listScore.filter(it => !it.isChecked);
-    if (this.listScoreOther != [] && this.otherScore.isChecked) {
+    if (this.listScoreOther != []) {
       this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
       this.listScoreOther.forEach(data => {
         this.otherScore.score += data.totalScore;
@@ -58,29 +80,10 @@ export class HomePage {
     else {
       this.otherScore.status = false;
     }
-
   }
 
   SendResultScore() {
-    // let option = { "headers": { "Content-Type": "application/json" } };
-    this.http.post(GlobalVaraible.host + "UpdatePartyScore", null)
-      .subscribe(data => {
-        const confirm = this.alertController.create({
-          title: 'อัปโหลดคะแนนสำเร็จ',
-          buttons: [
-            {
-              text: 'OK',
-              handler: () => {
-                this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
-                  .subscribe(data => {
-                    this.listShowScore = data;
-                  });
-              }
-            }
-          ]
-        });
-        confirm.present();
-      });
+
   }
 
   showScoreAreaOfParty(idPart: string) {
@@ -91,13 +94,9 @@ export class HomePage {
     this.navCtrl.push("PartylistdetailPage");
   }
 
-  initializeItems() {
-    this.listfilter = this.listScoreAll;
-  }
-
   getItems(ev) {
     // Reset items back to all of the items
-    this.initializeItems();
+    this.listfilter = this.listScoreAll;
 
     // set val to the value of the ev target
     var val = ev.target.value;

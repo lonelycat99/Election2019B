@@ -49,9 +49,6 @@ export class DataElectionPage {
       dataid: id
     });
     modal.present();
-    // this.navCtrl.push(EditscorePage,{
-    //   dataid:id
-    // });
   }
 
 
