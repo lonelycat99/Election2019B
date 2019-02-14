@@ -62,8 +62,8 @@ export class HomePage {
   }
 
   SendResultScore() {
-    let option = { "headers": { "Content-Type": "application/json" } };
-    this.http.post(GlobalVaraible.host + "UpdatePartyScore", option)
+    // let option = { "headers": { "Content-Type": "application/json" } };
+    this.http.post(GlobalVaraible.host + "UpdatePartyScore", null)
       .subscribe(data => {
         const confirm = this.alertController.create({
           title: 'อัปโหลดคะแนนสำเร็จ',
