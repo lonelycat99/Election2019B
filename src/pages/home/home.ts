@@ -83,6 +83,22 @@ export class HomePage {
   }
 
   SendResultScore() {
+    this.http.post(GlobalVaraible.host + "UpdateTable2", null)
+      .subscribe(data => {
+        this.http.post(GlobalVaraible.host + "UpdateScorePartyApp1", null)
+          .subscribe(data => {
+          });
+        const confirm = this.alertController.create({
+          title: 'ส่งผลประเมิณสำเร็จ',
+          buttons: [
+            {
+              text: 'OK',
+              handler: () => { }
+            }
+          ]
+        });
+        confirm.present();
+      });
 
   }
 
