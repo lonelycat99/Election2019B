@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { ScoreArea, otherScore, GetScoreParty, GlobalVaraible } from '../../app/model';
 import { EditscorePage } from '../editscore/editscore';
@@ -19,8 +19,9 @@ export class DataElectionDetailPage {
   listOther: ScoreArea[];
   other: otherScore = new otherScore;
   chart: [any];
+  tag: string;
   @ViewChild('barCanvas') barCanvas;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController, public alertController: AlertController) {
     this.idArea = this.navParams.get('_idArea');
     this.nameArea = this.navParams.get('_nameArea');
     console.log(this.idArea);
@@ -96,6 +97,23 @@ export class DataElectionDetailPage {
       _dataScore: dataScore
     });
   }
-
+  sendtag() {
+    // https://electionvars.azurewebsites.net/api/ElectionV3/SetTags/
+    this.http.post(GlobalVaraible.host + "SetTags/" + this.idArea + "/" + this.tag, null)
+      .subscribe(data => {
+        const confirm = this.alertController.create({
+          title: 'เพิ่มTagสำเร็จ',
+          buttons: [
+            {
+              text: 'OK',
+              handler: () => { }
+            }
+          ]
+        });
+        confirm.present();
+        console.log(this.tag);
+        console.log(data);
+      });
+  }
 }
 
