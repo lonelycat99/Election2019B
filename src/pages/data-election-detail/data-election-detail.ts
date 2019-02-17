@@ -44,7 +44,6 @@ export class DataElectionDetailPage {
           count += 1;
         });
         this.other = { name: "อื่นๆ", score: 0 };
-        // this.other = { name: "อื่นๆ", score: 0 };
         this.listOther.forEach(data => {
           this.other.score += data.score;
         });
