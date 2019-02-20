@@ -5,6 +5,8 @@ export class PartyScore {
     idParty: string;
     partyName: string;
     totalScore: number;
+    haveScore: number;
+    haveScoreDigit: number;
     areaScore: number;
     nameListScore: number;
     percentScore: number;
@@ -14,11 +16,6 @@ export class PartyScore {
 export class otherScore {
     name: string;
     score: number;
-}
-
-export class FilterArea {
-    name: string;
-    isChecked: boolean;
 }
 
 export class ScoreArea {
@@ -36,20 +33,6 @@ export class ScoreArea {
     tags: string[];
     statusEdit: boolean;
     statusAreaEdit: boolean;
-}
-
-export class AreaData {
-    Id: string;
-    NameParty: string;
-    NameArea: string;
-    LocationCode: string;
-    IDProvince: string;
-    District: string;
-    SubDistrict: string;
-    NameRegister: string;
-    NoRegister: string;
-    Status: string;
-    ScoreReceive: DataScore[];
 }
 
 export class DataScore {
