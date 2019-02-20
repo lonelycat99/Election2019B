@@ -18,19 +18,7 @@ export class HomePage {
   listfilter: PartyScore[];
 
   constructor(public navCtrl: NavController, public http: HttpClient, public alertController: AlertController) {
-    // this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
-    //   .subscribe(data => {
-    //     this.listScoreAll = data;
-    //     this.listfilter = this.listScoreAll;
-    //     this.listScoreAll.forEach(data => {
-    //       data.isChecked = true;
-    //       this.listScore.push(data);
-    //     });
-    //     this.listShowScore = this.listScore;
-    //     this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
-    //     console.log(this.listScore);
-    //   });
-    // this.listfilter = this.listScoreAll;
+
   }
   ionViewDidEnter() {
     // "http://localhost:5000/api/ElectionV3/UploadFile"
@@ -71,7 +59,7 @@ export class HomePage {
     if (this.listScoreOther != []) {
       this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
       this.listScoreOther.forEach(data => {
-        this.otherScore.score += data.totalScore;
+        this.otherScore.score += data.haveScore;
         this.otherScore.scoreArea += data.areaScore;
         this.otherScore.scorePartyList += data.nameListScore;
         this.otherScore.scorePercent += data.percentScore;

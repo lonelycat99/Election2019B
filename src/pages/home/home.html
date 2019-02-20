@@ -95,7 +95,7 @@
         {{scoreParty.partyName}}
       </ion-col>
       <ion-col text-center col-2>
-        {{scoreParty.totalScore}}
+        {{scoreParty.haveScore}}
       </ion-col>
       <ion-col text-center col-2 (click)="showScoreAreaOfParty(scoreParty.idParty)">
         {{scoreParty.areaScore}}
@@ -115,7 +115,7 @@
       <ion-col text-center col-2>
         {{otherScore.score}}
       </ion-col>
-      <ion-col text-center col-2 (click)="showScoreAreaOfParty(scoreParty.idParty)">
+      <ion-col text-center col-2>
         {{otherScore.scoreArea}}
       </ion-col>
       <ion-col text-center col-2>
