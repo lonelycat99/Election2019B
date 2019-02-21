@@ -46,10 +46,10 @@
     </ion-row>
     <ion-row>
       <ion-col></ion-col>
-      <ion-col>
-        <button ion-button block color="secondary" (click)="sendtag()">บันทึก</button>
-      </ion-col>
       <ion-col></ion-col>
+      <ion-col>
+        <button ion-button block color="green" (click)="sendtag()">บันทึก</button>
+      </ion-col>
     </ion-row>
 
   </ion-grid>
@@ -57,11 +57,12 @@
   <ion-grid text-center>
     <ion-row>
       <ion-col col-12 text-center style=" background: #4E5983;color: white">
-          <h1>ผลสรุปรวม</h1>
+        <h1>ผลสรุปรวม</h1>
       </ion-col>
     </ion-row>
     <ion-row class="bgTabalcol1" text-left>
-      <ion-col text-center col-4>
+      <ion-col col-1></ion-col>
+      <ion-col text-center col-3>
         พรรค
       </ion-col>
       <ion-col text-center col-4>
@@ -77,7 +78,8 @@
     </ion-row>
     <div *ngFor="let data of listScoreParty;let i = index" class="bgTabalcol2 bgTabalcolxx">
       <ion-row *ngIf="i < 5">
-        <ion-col col-4 text-center align-self-center>
+        <ion-col col-1></ion-col>
+        <ion-col col-3 text-left align-self-center>
           {{data.nameParty}}
         </ion-col>
         <ion-col col-4 text-center align-self-center>
@@ -98,7 +100,8 @@
     </div>
 
     <ion-row class="bgTabalcol2">
-      <ion-col col-4 text-center>
+      <ion-col col-1></ion-col>
+      <ion-col col-3 text-left>
         {{other.name}}
       </ion-col>
       <ion-col col-4 text-center>
