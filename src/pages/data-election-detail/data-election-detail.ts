@@ -35,19 +35,11 @@ export class DataElectionDetailPage {
     this.http.get<ScoreArea[]>(GlobalVaraible.host + "GetScoreAreasWithArea/" + this.idArea).subscribe(
       data => {
         this.listScoreParty = data;
-        let count = 0;
-        this.listOther = [];
-        this.listScoreParty.forEach(data => {
-          if (count > 4) {
-            this.listOther.push(data);
-          }
-          count += 1;
-        });
+        this.listOther = this.listScoreParty.slice(5);
         this.other = { name: "อื่นๆ", score: 0 };
         this.listOther.forEach(data => {
           this.other.score += data.score;
         });
-
         this.chart = new Chart(this.barCanvas.nativeElement, {
           type: 'bar',
           data: {
