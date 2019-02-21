@@ -41,8 +41,8 @@ export class FormatCalculatePage {
 
   }
 
-  GoCalculate(idArea: string) {
-    this.navCtrl.push(FormatCalculateDetailPage, { _idArea: idArea })
+  GoCalculate(idArea: string, namearea) {
+    this.navCtrl.push(FormatCalculateDetailPage, { _idArea: idArea, _nameArea: namearea })
   }
 
   initializeItems() {

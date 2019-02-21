@@ -27,7 +27,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row margin *ngFor="let areas of listfilter" class="bgTabalcol2 bgTabalcolxx" (click)="GoCalculate(areas.idArea)">
+  <ion-row margin *ngFor="let areas of listfilter" class="bgTabalcol2 bgTabalcolxx" (click)="GoCalculate(areas.idArea,areas.nameArea)">
     <ion-col col-11>
       {{areas.nameArea}}
     </ion-col>
