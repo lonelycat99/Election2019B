@@ -23,7 +23,7 @@
     </ion-col>
     <ion-col col-7></ion-col>
     <ion-col col-2 class="backgroundNav" text-center align-self-center>
-      <button ion-button color="light" (click)="SendResultScore()">ส่งผลประเมิน</button>
+      <button ion-button block color="light" (click)="SendResultScore()">ส่งผลประเมิน</button>
     </ion-col>
   </ion-row>
 
@@ -58,7 +58,7 @@
 
   <ion-row class="lineT"></ion-row>
 
-  <ion-row padding text-center class="background">
+  <ion-row padding text-center class="background textsmall" >
     <ion-label *ngIf="!checkShowMoreParty" (click)="ShowMoreParty()">การแสดงผลของตาราง
       <ion-icon name="md-arrow-dropdown"></ion-icon>
     </ion-label>
@@ -82,7 +82,7 @@
         <h3 text-center>แบ่งเขต</h3>
       </ion-col>
       <ion-col col-2>
-        <h3 text-center>สัดส่วน</h3>
+        <h3 text-center>บัญชีรายชื่อ</h3>
       </ion-col>
       <ion-col col-3>
         <h3 text-center>เปอร์เซ็นต์</h3>
@@ -91,7 +91,7 @@
 
 
     <ion-row *ngFor="let scoreParty of listShowScore" class="bgTabalcol2 bgTabalcolxx">
-      <ion-col text-center col-3>
+      <ion-col text-left col-3>
         {{scoreParty.partyName}}
       </ion-col>
       <ion-col text-center col-2>
@@ -109,7 +109,7 @@
     </ion-row>
 
     <ion-row class="bgTabalcol2 bgTabalcolxx" *ngIf="otherScore.status">
-      <ion-col text-center col-3>
+      <ion-col text-left col-3>
         อื่นๆ
       </ion-col>
       <ion-col text-center col-2>

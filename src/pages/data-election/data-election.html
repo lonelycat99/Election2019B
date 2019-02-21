@@ -23,18 +23,21 @@
 
   </ion-row>
 
-  <ion-row padding>
+  <ion-row padding class="text">
     <ion-col col-1>
     </ion-col>
-    <ion-col col-2>
+    <ion-col col-1>
     </ion-col>
-    <ion-col text-center class="text" col-3>
+    <ion-col col-2 text-center>
+      จังหวัด/เขต
+    </ion-col>
+    <ion-col text-center col-2>
       พรรคที่ชนะ
     </ion-col>
-    <ion-col text-center class="text" col-3>
-      คะแนนของพรรคที่ชนะ
+    <ion-col text-center col-3>
+      คะแนนพรรคที่ชนะ
     </ion-col>
-    <ion-col text-center class="text" col-3>
+    <ion-col text-center col-3>
       คะแนนของเพื่อไทย
     </ion-col>
   </ion-row>
@@ -46,17 +49,19 @@
         <img src="../../assets/imgs/pencil-on-a-notes-paper4.png">
       </div>
     </ion-col>
-    <ion-col align-self-center text-center col-2>
+    <ion-col col-1>
+    </ion-col>
+    <ion-col align-self-left text-left col-2>
       {{area.nameArea}}
     </ion-col>
-    <ion-col align-self-center text-center col-3>
+    <ion-col align-self-center text-center col-2>
       {{area.partyWin}}
     </ion-col>
     <ion-col align-self-center text-center col-3>
-      {{area.scoreMax}}
+      {{area.scoreMax | number}}
     </ion-col>
     <ion-col align-self-center text-center col-3>
-      {{area.scoreMyParty}}
+      {{area.scoreMyParty | number}}
     </ion-col>
   </ion-row>
 

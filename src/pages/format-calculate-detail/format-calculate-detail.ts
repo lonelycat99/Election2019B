@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { ScorePoll, GlobalVaraible } from '../../app/model';
+import { ScorePoll, GlobalVaraible, otherScore } from '../../app/model';
 
 /**
  * Generated class for the FormatCalculateDetailPage page.
@@ -19,9 +19,13 @@ export class FormatCalculateDetailPage {
 
   idArea: string;
   listScorePoll: ScorePoll[];
+  listScorePollOther: ScorePoll[] = [];
   listScorePoll2: ScorePoll[] = [];
   nameArea: string;
   percen: any;
+  percenOther: any;
+  other: otherScore = new otherScore;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public http: HttpClient) {
     this.idArea = this.navParams.get('_idArea');
     this.nameArea = this.navParams.get('_nameArea');
@@ -48,6 +52,18 @@ export class FormatCalculateDetailPage {
             targetScoreDefault: data.targetScoreDefault
           })
         });
+        let count = 0;
+        this.listScorePoll2.forEach(data => {
+          if (count > 5) {
+            this.listScorePollOther.push(data);
+          }
+          count += 1;
+        });
+        this.other = { name: "อื่นๆ", score: 0 };
+        this.listScorePollOther.forEach(data => {
+          this.other.score += Number(data.percentScore);
+        });
+        console.log(this.other);
         console.log(this.listScorePoll2);
       });
   }

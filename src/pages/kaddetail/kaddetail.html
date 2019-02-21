@@ -19,10 +19,14 @@
     <ion-col col-1>
       <h3 text-center>ลำดับ</h3>
     </ion-col>
-    <ion-col col-3>
+    <ion-col col-1>
+    </ion-col>
+    <ion-col col-2>
       <h3 text-center>ชื่อเขต</h3>
     </ion-col>
-    <ion-col col-4>
+    <ion-col col-1>
+    </ion-col>
+    <ion-col col-3>
       <h3 text-center>ชื่อผู้สมัคร</h3>
     </ion-col>
     <ion-col col-4>
@@ -30,18 +34,22 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngFor="let scoreArea of listScoreAreaOfParty; let i = index" class="bgTabalcol2 bgTabalcolxx">
-    <ion-col col-1>
-      <h3 text-center>{{i+1}}</h3>
+  <ion-row *ngFor="let scoreArea of listScoreAreaOfParty; let i = index" class="bgTabalcol2 bgTabalcolxx" >
+    <ion-col col-1 align-self-center>
+      <h3 text-center >{{i+1}}</h3>
     </ion-col>
-    <ion-col col-3>
-      <h3 text-center>{{scoreArea.nameArea}}</h3>
+    <ion-col col-1 align-self-center>
     </ion-col>
-    <ion-col col-4>
-      <h3 text-center>{{scoreArea.nameRegister}}</h3>
+    <ion-col col-2 align-self-center>
+      <h3 text-left >{{scoreArea.nameArea}}</h3>
     </ion-col>
-    <ion-col col-4>
-      <h3 text-center>{{scoreArea.score}}</h3>
+    <ion-col col-1 align-self-center>
+    </ion-col>
+    <ion-col col-3 align-self-center>
+      <h3 text-left align-self-center>{{scoreArea.nameRegister}}</h3>
+    </ion-col>
+    <ion-col col-4 align-self-center>
+      <h3 text-center>{{scoreArea.score | number}}</h3>
     </ion-col>
   </ion-row>
 

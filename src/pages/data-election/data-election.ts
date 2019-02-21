@@ -20,20 +20,19 @@ export class DataElectionPage {
   namekad: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController) {
+    this.initializeItems();
   }
 
   ionViewDidEnter() {
-    console.log('ionViewDidEnter DataElectionPage');
+    // "https://electionvars.azurewebsites.net/api/ElectionV3/GetAllAreaMaxScore"
+    // "http://localhost:5000/api/ElectionV3/GetScoreMyParty"
+    // GlobalVaraible.host + "GetScoreMyParty"
     this.http.get<GetScoreParty[]>(GlobalVaraible.host + "GetMaxScoreAndMyScore")
       .subscribe(data => {
         this.listMyParty = data;
         this.listFilter = this.listMyParty;
         console.log(this.listMyParty);
       });
-    this.initializeItems();
-    // "https://electionvars.azurewebsites.net/api/ElectionV3/GetAllAreaMaxScore"
-    // "http://localhost:5000/api/ElectionV3/GetScoreMyParty"
-    // GlobalVaraible.host + "GetScoreMyParty"
   }
 
   initializeItems() {
