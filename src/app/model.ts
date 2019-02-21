@@ -4,6 +4,7 @@ export class PartyScore {
     id: string;
     idParty: string;
     partyName: string;
+    nameInitial: string;
     totalScore: number;
     haveScore: number;
     haveScoreDigit: number;
@@ -76,6 +77,10 @@ export class ScoreOther {
     scorePercent: number;
     isChecked: boolean;
     status: boolean;
+}
+
+export class TextTag {
+    text: string;
 }
 
 
