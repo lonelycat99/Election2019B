@@ -36,13 +36,25 @@
     </ion-col>
   </ion-row> -->
   <div margin *ngFor="let data of listScorePoll2;let i = index">
-    <ion-row *ngIf="i < 6">
+    <ion-row *ngIf="i == 0">
       <ion-col col-3 text-left>
         {{data.nameParty}}
       </ion-col>
       <ion-col col-1>
         <!-- [(ngModel)]="data.percentScore"  -->
-        {{data.percentScore}}
+        {{data.score}}
+        <!-- <ion-input type="number" text-center [(ngModel)]="data.percentScore" ></ion-input> -->
+      </ion-col>
+      <ion-col col-8>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="i < 6 && i != 0">
+      <ion-col col-3 text-left>
+        {{data.nameParty}}
+      </ion-col>
+      <ion-col col-1>
+        <!-- [(ngModel)]="data.percentScore"  -->
+        {{data.percentScore | number:'1.2-2'}}
         <!-- <ion-input type="number" text-center [(ngModel)]="data.percentScore" ></ion-input> -->
       </ion-col>
       <ion-col col-1>
