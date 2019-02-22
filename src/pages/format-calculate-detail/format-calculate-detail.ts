@@ -19,8 +19,8 @@ export class FormatCalculateDetailPage {
 
   idArea: string;
   listScorePoll: ScorePoll[];
-  listScorePollOther: ScorePoll[] = [];
-  listScorePoll2: ScorePoll[] = [];
+  listScorePollOther: ScorePoll[];
+  listScorePoll2: ScorePoll[];
   nameArea: string;
   percen: any;
   percenOther: any;
@@ -39,6 +39,8 @@ export class FormatCalculateDetailPage {
   }
 
   ionViewDidEnter() {
+    this.listScorePollOther = [];
+    this.listScorePoll2 = [];
     this.http.get<ScorePoll[]>(GlobalVaraible.host + "GetAreaScorePoll/" + this.idArea)
       .subscribe(data => {
         this.listScorePoll = data
@@ -51,17 +53,12 @@ export class FormatCalculateDetailPage {
             targetScoreDefault: data.targetScoreDefault
           })
         });
-        let count = 0;
-        this.listScorePoll2.forEach(data => {
-          if (count > 5) {
-            this.listScorePollOther.push(data);
-          }
-          count += 1;
-        });
+        this.listScorePollOther = this.listScorePoll2.splice(6);
         this.other = { name: "อื่นๆ", score: 0 };
-        this.listScorePollOther.forEach(data => {
-          this.other.score += Number(data.percentScore);
-        });
+        this.other.score = this.listScorePollOther.map(it => it.percentScore).reduce((a, b) => a + b);
+        // forEach(data => {
+        //   this.other.score += Number(data.percentScore);
+        // });
         console.log(this.other);
         console.log(this.listScorePoll2);
       });
