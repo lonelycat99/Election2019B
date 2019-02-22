@@ -43,12 +43,11 @@ export class FormatCalculateDetailPage {
       .subscribe(data => {
         this.listScorePoll = data
         this.listScorePoll.forEach(data => {
-          this.nameArea = data.nameArea
-          this.percen = data.percentScore.toFixed(2);
+          this.nameArea = data.nameArea;
           this.listScorePoll2.push({
             id: data.id, idParty: data.idParty, idArea: data.idArea,
             nameArea: data.nameArea, nameParty: data.nameParty, datePoll: data.datePoll, score: data.score,
-            percentScore: this.percen, source: data.source, targetScore: data.targetScore,
+            percentScore: data.percentScore, source: data.source, targetScore: data.targetScore,
             targetScoreDefault: data.targetScoreDefault
           })
         });
