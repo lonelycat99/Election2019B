@@ -13,7 +13,7 @@ export class TabsPage {
   tab1Root = HomePage;
   tab2Root = DataElectionPage;
   tab3Root = FormatCalculatePage;
-  tab4Root = SettingPage;
+  // tab4Root = SettingPage;
   tab5Root = UploadFilePage
 
   constructor() {

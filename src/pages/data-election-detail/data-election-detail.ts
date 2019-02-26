@@ -71,6 +71,16 @@ export class DataElectionDetailPage {
             }]
           },
           options: {
+            legend: {
+              display: false
+            },
+            tooltips: {
+              callbacks: {
+                label: function (tooltipItem) {
+                  return tooltipItem.yLabel;
+                }
+              }
+            },
             scales: {
               yAxes: [{
                 ticks: {
