@@ -17,35 +17,7 @@
     </ion-col>
   </ion-row> -->
 
-  <ion-row class="backgroundNav">
-    <ion-col col-3 padding>
-      <ion-label class="text">คะแนนคาดการณ์</ion-label>
-    </ion-col>
-    <ion-col col-7></ion-col>
-    <ion-col col-2 class="backgroundNav" text-center align-self-center>
-      <button ion-button block color="light" (click)="SendResultScore()">ส่งผลประเมิน</button>
-    </ion-col>
-  </ion-row>
 
-  <ion-row class="background">
-    <ion-col col-3 class="background" *ngFor="let data of listScore;let i = index">
-      <div *ngIf="i < 4">
-        <ion-item class="background" no-lines>
-          <ion-label>{{data.partyName}}</ion-label>
-          <ion-checkbox color="danger" [(ngModel)]="data.isChecked" (ionChange)="checkFilter()"></ion-checkbox>
-        </ion-item>
-      </div>
-
-      <div *ngIf="i >= 4">
-        <div *ngIf="checkShowMoreParty == true">
-          <ion-item class="background" no-lines>
-            <ion-label>{{data.partyName}}</ion-label>
-            <ion-checkbox color="danger" [(ngModel)]="data.isChecked" (ionChange)="checkFilter()"></ion-checkbox>
-          </ion-item>
-        </div>
-      </div>
-    </ion-col>
-  </ion-row>
 
   <!-- <ion-row *ngIf="checkShowMoreParty" class="background">
     <ion-col col-3>
@@ -55,20 +27,6 @@
       </ion-item>
     </ion-col>
   </ion-row> -->
-
-  <ion-row class="lineT"></ion-row>
-
-  <ion-row padding text-center class="background textsmall" >
-    <ion-label *ngIf="!checkShowMoreParty" (click)="ShowMoreParty()">การแสดงผลของตาราง
-      <ion-icon name="md-arrow-dropdown"></ion-icon>
-    </ion-label>
-    <ion-label *ngIf="checkShowMoreParty" (click)="ShowMoreParty()">การแสดงผลของตาราง
-      <ion-icon name="md-arrow-dropup"></ion-icon>
-    </ion-label>
-  </ion-row>
-
-
-
   <div margin-top>
 
     <ion-row class="bgTabalcol1">
@@ -127,4 +85,46 @@
     </ion-row>
 
   </div>
+  <br>
+  <ion-row class="backgroundNav">
+    <ion-col col-3 padding>
+      <ion-label class="text">คะแนนคาดการณ์</ion-label>
+    </ion-col>
+    <ion-col col-7></ion-col>
+    <ion-col col-2 class="backgroundNav" text-center align-self-center>
+      <button ion-button block color="light" (click)="SendResultScore()">ส่งผลประเมิน</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="background">
+    <ion-col col-3 class="background" *ngFor="let data of listScore;let i = index">
+      <div *ngIf="i < 4">
+        <ion-item class="background" no-lines>
+          <ion-label>{{data.partyName}}</ion-label>
+          <ion-checkbox color="danger" [(ngModel)]="data.isChecked" (ionChange)="checkFilter()"></ion-checkbox>
+        </ion-item>
+      </div>
+
+      <div *ngIf="i >= 4">
+        <div *ngIf="checkShowMoreParty == true">
+          <ion-item class="background" no-lines>
+            <ion-label>{{data.partyName}}</ion-label>
+            <ion-checkbox color="danger" [(ngModel)]="data.isChecked" (ionChange)="checkFilter()"></ion-checkbox>
+          </ion-item>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="lineT"></ion-row>
+
+  <ion-row padding text-center class="background textsmall">
+    <ion-label *ngIf="!checkShowMoreParty" (click)="ShowMoreParty()">การแสดงผลของตาราง
+      <ion-icon name="md-arrow-dropdown"></ion-icon>
+    </ion-label>
+    <ion-label *ngIf="checkShowMoreParty" (click)="ShowMoreParty()">การแสดงผลของตาราง
+      <ion-icon name="md-arrow-dropup"></ion-icon>
+    </ion-label>
+  </ion-row>
+
 </ion-content>
