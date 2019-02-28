@@ -36,6 +36,8 @@ export class ScoreArea {
     tags: string[];
     statusEdit: boolean;
     statusAreaEdit: boolean;
+    region: string;
+    idRegion: string;
 }
 
 export class DataScore {
@@ -87,5 +89,7 @@ export class TextTag {
 
 
 export class GlobalVaraible {
+    // static host: string = "http://localhost:5000/api/ElectionV3/";
     static host: string = "https://electionvars.azurewebsites.net/api/ElectionV3/";
+
 }
