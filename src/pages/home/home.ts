@@ -50,6 +50,15 @@ export class HomePage {
       });
   }
 
+  setStatusAlly(scorePartymodel: PartyScore) {
+
+    this.http.post(GlobalVaraible.host + "SetStatusAllies/" + scorePartymodel.id + "/" + scorePartymodel.statusAllies, null)
+      .subscribe(data => {
+        console.log("set done");
+
+      });
+  }
+
   ShowMoreParty() {
     if (this.checkShowMoreParty == false) {
       this.checkShowMoreParty = true
