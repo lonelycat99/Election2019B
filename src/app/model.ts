@@ -12,8 +12,6 @@ export class PartyScore {
     nameListScore: number;
     percentScore: number;
     isChecked: boolean;
-    statusAllies:string;
-    colorParty:string;
 }
 
 export class otherScore {

@@ -16,9 +16,14 @@ export class HomePage {
   otherScore: ScoreOther = new ScoreOther;
   checkShowMoreParty: boolean = false
   listfilter: PartyScore[];
+  selectOptions: { title: string; subTitle: string; mode: string; };
 
   constructor(public navCtrl: NavController, public http: HttpClient, public alertController: AlertController) {
-
+    // this.selectOptions = {
+    //   title: 'Pizza Toppings',
+    //   subTitle: 'Select your toppings',
+    //   mode: 'md'
+    // };
   }
   ionViewDidEnter() {
     // "http://localhost:5000/api/ElectionV3/UploadFile"
