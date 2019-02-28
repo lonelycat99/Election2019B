@@ -71,21 +71,26 @@ export class HomePage {
   }
 
   SendResultScore() {
+    console.log("1");
+
     this.http.post(GlobalVaraible.host + "UpdateTable2", null)
       .subscribe(data => {
+        console.log("2");
         this.http.post(GlobalVaraible.host + "UpdateScorePartyApp1", null)
           .subscribe(data => {
+            console.log("3");
+            const confirm = this.alertController.create({
+              title: 'ส่งผลประเมิณสำเร็จ',
+              buttons: [
+                {
+                  text: 'OK',
+                  handler: () => { }
+                }
+              ]
+            });
+            confirm.present();
           });
-        const confirm = this.alertController.create({
-          title: 'ส่งผลประเมิณสำเร็จ',
-          buttons: [
-            {
-              text: 'OK',
-              handler: () => { }
-            }
-          ]
-        });
-        confirm.present();
+
       });
 
   }

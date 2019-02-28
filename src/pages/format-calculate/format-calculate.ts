@@ -22,7 +22,7 @@ export class FormatCalculatePage {
   listfilter: ScoreArea[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
-    this.http.get<ScoreArea[]>(GlobalVaraible.host + "GetAllArea")
+    this.http.get<ScoreArea[]>(GlobalVaraible.host + "GetAllAreaTable4")
       .subscribe(data => {
         this.listArea = data;
         this.listfilter = this.listArea;
