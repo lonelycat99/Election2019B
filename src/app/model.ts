@@ -12,8 +12,6 @@ export class PartyScore {
     nameListScore: number;
     percentScore: number;
     isChecked: boolean;
-    statusAllies:string;
-    colorParty:string;
 }
 
 export class otherScore {
@@ -87,5 +85,5 @@ export class TextTag {
 
 
 export class GlobalVaraible {
-    static host: string = "https://electionvars.azurewebsites.net/api/ElectionV3/";
+    static host: string = "http://localhost:49598/api/ElectionV3/";
 }

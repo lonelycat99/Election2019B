@@ -27,10 +27,32 @@
       </ion-item>
     </ion-col>
   </ion-row> -->
-  <div margin-top>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4></ion-col>
+      <ion-col col-4>
+        <ion-row>
+          <ion-label>Gaming</ion-label>
+          <ion-select [(ngModel)]="gaming">
+            <ion-option value="nes">NES</ion-option>
+            <ion-option value="n64">Nintendo64</ion-option>
+            <ion-option value="ps">PlayStation</ion-option>
+            <ion-option value="genesis">Sega Genesis</ion-option>
+            <ion-option value="saturn">Sega Saturn</ion-option>
+            <ion-option value="snes">SNES</ion-option>
+          </ion-select>
+        </ion-row>
+      </ion-col>
+      <ion-col col-4></ion-col>
+    </ion-row>
+  </ion-grid>
 
+  <div margin-top>
     <ion-row class="bgTabalcol1">
-      <ion-col col-3>
+      <ion-col col-1>
+        ทีมเราเอง
+      </ion-col>
+      <ion-col col-2>
         <h3 text-center>พรรค</h3>
       </ion-col>
       <ion-col col-2>
@@ -39,35 +61,48 @@
       <ion-col col-2>
         <h3 text-center>แบ่งเขต</h3>
       </ion-col>
-      <ion-col col-2>
+      <ion-col col-1>
         <h3 text-center>บัญชีรายชื่อ</h3>
       </ion-col>
-      <ion-col col-3>
+      <ion-col col-1>
         <h3 text-center>เปอร์เซ็นต์</h3>
+      </ion-col>
+      <ion-col col-3>
       </ion-col>
     </ion-row>
 
 
     <ion-row *ngFor="let scoreParty of listShowScore" class="bgTabalcol2 bgTabalcolxx">
-      <ion-col text-left col-3>
+      <ion-col col-1>
+        ทีมเราเอง
+      </ion-col>
+      <ion-col text-left col-2>
         {{scoreParty.partyName}}
       </ion-col>
-      <ion-col text-center col-2>
+      <ion-col text-center col-2 >
         {{scoreParty.haveScore}}
       </ion-col>
       <ion-col text-center col-2 (click)="showScoreAreaOfParty(scoreParty.idParty)">
         {{scoreParty.areaScore}}
       </ion-col>
-      <ion-col text-center col-2>
+      <ion-col text-center col-1>
         {{scoreParty.nameListScore}}
       </ion-col>
-      <ion-col text-center col-3>
+      <ion-col text-center col-1>
         {{scoreParty.percentScore | number:'1.2-2'}} %
+      </ion-col>      
+      <ion-col col-3>
+          <ion-select  [(ngModel)]="gaming" float-center>
+            <ion-option value="nes">ฝ่ายเรา</ion-option>
+            <ion-option value="n64">ตรงข้าม</ion-option>
+            <ion-option value="ps">ลังเล</ion-option>
+          </ion-select>
       </ion-col>
     </ion-row>
 
     <ion-row class="bgTabalcol2 bgTabalcolxx" *ngIf="otherScore.status">
-      <ion-col text-left col-3>
+      <ion-col col-1></ion-col>
+      <ion-col text-left col-2>
         อื่นๆ
       </ion-col>
       <ion-col text-center col-2>
@@ -76,12 +111,22 @@
       <ion-col text-center col-2>
         {{otherScore.scoreArea}}
       </ion-col>
-      <ion-col text-center col-2>
+      <ion-col text-center col-1>
         {{otherScore.scorePartyList}}
       </ion-col>
-      <ion-col text-center col-3>
+      <ion-col text-center col-1>
         {{otherScore.scorePercent | number:'1.2-2'}} %
       </ion-col>
+      <!-- <ion-col col-3>
+        <ion-select [(ngModel)]="gaming">
+          <ion-option value="nes">NES</ion-option>
+          <ion-option value="n64">Nintendo64</ion-option>
+          <ion-option value="ps">PlayStation</ion-option>
+          <ion-option value="genesis">Sega Genesis</ion-option>
+          <ion-option value="saturn">Sega Saturn</ion-option>
+          <ion-option value="snes">SNES</ion-option>
+        </ion-select>
+      </ion-col> -->
     </ion-row>
 
   </div>
