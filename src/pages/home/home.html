@@ -74,12 +74,12 @@
 
     <ion-row *ngFor="let scoreParty of listShowScore" class="bgTabalcol2 bgTabalcolxx">
       <ion-col col-1>
-        ทีมเราเอง
+        {{scoreParty.statusAllies}}
       </ion-col>
       <ion-col text-left col-2>
         {{scoreParty.partyName}}
       </ion-col>
-      <ion-col text-center col-2 >
+      <ion-col text-center col-2>
         {{scoreParty.haveScore}}
       </ion-col>
       <ion-col text-center col-2 (click)="showScoreAreaOfParty(scoreParty.idParty)">
@@ -90,13 +90,13 @@
       </ion-col>
       <ion-col text-center col-1>
         {{scoreParty.percentScore | number:'1.2-2'}} %
-      </ion-col>      
+      </ion-col>
       <ion-col col-3>
-          <ion-select  [(ngModel)]="gaming" float-center>
-            <ion-option value="nes">ฝ่ายเรา</ion-option>
-            <ion-option value="n64">ตรงข้าม</ion-option>
-            <ion-option value="ps">ลังเล</ion-option>
-          </ion-select>
+        <ion-select [(ngModel)]="scoreParty.statusAllies" float-right (ionChange)="setStatusAlly(scoreParty)">
+          <ion-option value="ฝ่ายเรา">ฝ่ายเรา</ion-option>
+          <ion-option value="ตรงข้าม">ตรงข้าม</ion-option>
+          <ion-option value="ลังเล">ลังเล</ion-option>
+        </ion-select>
       </ion-col>
     </ion-row>
 
