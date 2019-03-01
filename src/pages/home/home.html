@@ -70,7 +70,15 @@
 
     <ion-row *ngFor="let scoreParty of listShowScore" class="bgTabalcol2 bgTabalcolxx">
       <ion-col col-1>
-        {{scoreParty.statusAllies}}
+        <div *ngIf="scoreParty.statusAllies == 'ลังเล'" style="color:gold ">
+          {{scoreParty.statusAllies}}
+        </div>
+        <div *ngIf="scoreParty.statusAllies == 'ฝ่ายเรา'" style="color:red ">
+          {{scoreParty.statusAllies}}
+        </div>
+        <div *ngIf="scoreParty.statusAllies == 'ตรงข้าม'" style="color:green ">
+          {{scoreParty.statusAllies}}
+        </div>
       </ion-col>
       <ion-col text-left col-2>
         {{scoreParty.partyName}}
