@@ -11,11 +11,12 @@ export class HomePage {
 
   listScoreAll: PartyScore[];
   listScore: PartyScore[] = [];
+  listScoreWithStatusAllies: PartyScore[];
   listShowScore: PartyScore[] = [];
   listScoreOther: PartyScore[] = [];
   otherScore: ScoreOther = new ScoreOther;
   checkShowMoreParty: boolean = false
-  listfilter: PartyScore[];
+  // listfilter: PartyScore[];
   alliesData: string[];
   selectOptions: { title: string; subTitle: string; mode: string; };
   filter: string;
@@ -42,14 +43,15 @@ export class HomePage {
     // GlobalVaraible.host + "GetAllPartyScore"
     this.listShowScore = [];
     this.listScoreAll = [];
-    this.listfilter = [];
+    this.listScoreWithStatusAllies = [];
+    // this.listfilter = [];
     this.listScore = [];
     this.http.post(GlobalVaraible.host + "UpdatePartyScore", null)
       .subscribe(data => {
         this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
           .subscribe(data => {
             this.listScoreAll = data;
-            this.listfilter = this.listScoreAll;
+            // this.listfilter = this.listScoreAll;
             this.listScoreAll.forEach(data => {
               data.isChecked = true;
               this.listScore.push(data);
@@ -58,7 +60,7 @@ export class HomePage {
             this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
             console.log(this.listScore);
           });
-        this.listfilter = this.listScoreAll;
+        // this.listfilter = this.listScoreAll;
       });
   }
 
@@ -77,8 +79,23 @@ export class HomePage {
     }
   }
 
+  goFilter() {
+    if (this.filter != "all") {
+      this.listShowScore = this.listScoreAll.filter(it => it.statusAllies == this.filter);
+      this.listScore.forEach(it => {
+        it.isChecked = this.listShowScore.some(i => i.idParty == it.idParty)
+      });
+    }
+    else {
+      this.listShowScore = this.listScoreAll;
+      this.listScore.forEach(it => {
+        it.isChecked = true
+      });
+    }
+  }
+
   checkFilter() {
-    this.listScoreAll = this.listScore.filter(it => it.isChecked);
+    this.listShowScore = this.listScore.filter(it => it.isChecked);
     this.listScoreOther = this.listScore.filter(it => !it.isChecked);
     if (this.listScoreOther != []) {
       this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
@@ -125,41 +142,18 @@ export class HomePage {
     this.navCtrl.push("PartylistdetailPage");
   }
 
-  getItems(ev) {
-    // Reset items back to all of the items
-    this.listfilter = this.listScoreAll;
+  // getItems(ev) {
+  //   // Reset items back to all of the items
+  //   this.listfilter = this.listScoreAll;
 
-    // set val to the value of the ev target
-    var val = ev.target.value;
+  //   // set val to the value of the ev target
+  //   var val = ev.target.value;
 
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.listfilter = this.listScoreAll.filter((item) => {
-        return (item.partyName.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      });
-    }
-  }
-
-  goFilter() {
-    if (this.filter != "all") {
-      this.http.get<PartyScore[]>(GlobalVaraible.host + "GetScorePartyByStatusAllies/" + this.filter)
-        .subscribe(data => {
-          this.listScoreAll = data;
-          console.log("this.listData");
-          console.log(this.listScoreAll);
-        });
-      console.log("this.filter");
-      console.log(this.filter);
-    }
-    else {
-      this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
-        .subscribe(data => {
-          this.listScoreAll = data;
-          this.listScoreAll = this.listScore.filter(it => it.isChecked);
-          this.listScoreOther = this.listScore.filter(it => !it.isChecked);
-          console.log("this.listScoreAll");
-          console.log(this.listScoreAll);
-        });
-    }
-  }
+  //   // if the value is an empty string don't filter the items
+  //   if (val && val.trim() != '') {
+  //     this.listfilter = this.listScoreAll.filter((item) => {
+  //       return (item.partyName.toLowerCase().indexOf(val.toLowerCase()) > -1);
+  //     });
+  //   }
+  // }
 }
