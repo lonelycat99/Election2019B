@@ -16,7 +16,9 @@ export class HomePage {
   otherScore: ScoreOther = new ScoreOther;
   checkShowMoreParty: boolean = false
   listfilter: PartyScore[];
+  alliesData: string[];
   selectOptions: { title: string; subTitle: string; mode: string; };
+  filter: string;
 
   constructor(public navCtrl: NavController, public http: HttpClient, public alertController: AlertController) {
     // this.selectOptions = {
@@ -24,8 +26,18 @@ export class HomePage {
     //   subTitle: 'Select your toppings',
     //   mode: 'md'
     // };
+    // GetAllStatusAllies
+
   }
   ionViewDidEnter() {
+    this.filter = "all";
+    this.http.get<string[]>(GlobalVaraible.host + "GetAllStatusAllies")
+      .subscribe(data => {
+        this.alliesData = data;
+        console.log("xxx");
+        console.log(this.alliesData);
+      });
+
     // "http://localhost:5000/api/ElectionV3/UploadFile"
     // GlobalVaraible.host + "GetAllPartyScore"
     this.listShowScore = [];
@@ -51,11 +63,9 @@ export class HomePage {
   }
 
   setStatusAlly(scorePartymodel: PartyScore) {
-
     this.http.post(GlobalVaraible.host + "SetStatusAllies/" + scorePartymodel.id + "/" + scorePartymodel.statusAllies, null)
       .subscribe(data => {
         console.log("set done");
-
       });
   }
 
@@ -68,7 +78,7 @@ export class HomePage {
   }
 
   checkFilter() {
-    this.listShowScore = this.listScore.filter(it => it.isChecked);
+    this.listScoreAll = this.listScore.filter(it => it.isChecked);
     this.listScoreOther = this.listScore.filter(it => !it.isChecked);
     if (this.listScoreOther != []) {
       this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
@@ -86,7 +96,6 @@ export class HomePage {
 
   SendResultScore() {
     console.log("1");
-
     this.http.post(GlobalVaraible.host + "UpdateTable2", null)
       .subscribe(data => {
         console.log("2");
@@ -104,7 +113,6 @@ export class HomePage {
             });
             confirm.present();
           });
-
       });
 
   }
@@ -129,6 +137,29 @@ export class HomePage {
       this.listfilter = this.listScoreAll.filter((item) => {
         return (item.partyName.toLowerCase().indexOf(val.toLowerCase()) > -1);
       });
+    }
+  }
+
+  goFilter() {
+    if (this.filter != "all") {
+      this.http.get<PartyScore[]>(GlobalVaraible.host + "GetScorePartyByStatusAllies/" + this.filter)
+        .subscribe(data => {
+          this.listScoreAll = data;
+          console.log("this.listData");
+          console.log(this.listScoreAll);
+        });
+      console.log("this.filter");
+      console.log(this.filter);
+    }
+    else {
+      this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
+        .subscribe(data => {
+          this.listScoreAll = data;
+          this.listScoreAll = this.listScore.filter(it => it.isChecked);
+          this.listScoreOther = this.listScore.filter(it => !it.isChecked);
+          console.log("this.listScoreAll");
+          console.log(this.listScoreAll);
+        });
     }
   }
 }
