@@ -32,14 +32,10 @@
       <ion-col col-4></ion-col>
       <ion-col col-4>
         <ion-row>
-          <ion-label>Gaming</ion-label>
-          <ion-select [(ngModel)]="gaming">
-            <ion-option value="nes">NES</ion-option>
-            <ion-option value="n64">Nintendo64</ion-option>
-            <ion-option value="ps">PlayStation</ion-option>
-            <ion-option value="genesis">Sega Genesis</ion-option>
-            <ion-option value="saturn">Sega Saturn</ion-option>
-            <ion-option value="snes">SNES</ion-option>
+          <ion-label>พรรคที่ต้องการค้นหา</ion-label>
+          <ion-select [(ngModel)]="filter" (ionChange)="goFilter()">
+            <ion-option value="all">ทั้งหมด</ion-option>
+            <ion-option *ngFor="let filters of alliesData" value="{{filters}}">{{filters}}</ion-option>
           </ion-select>
         </ion-row>
       </ion-col>
@@ -72,7 +68,7 @@
     </ion-row>
 
 
-    <ion-row *ngFor="let scoreParty of listShowScore" class="bgTabalcol2 bgTabalcolxx">
+    <ion-row *ngFor="let scoreParty of listScoreAll" class="bgTabalcol2 bgTabalcolxx">
       <ion-col col-1>
         {{scoreParty.statusAllies}}
       </ion-col>
@@ -100,7 +96,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row class="bgTabalcol2 bgTabalcolxx" *ngIf="otherScore.status">
+    <ion-row class="bgTabalcol2 bgTabalcolxx" *ngIf="otherScore.status && filter == 'all' ">
       <ion-col col-1></ion-col>
       <ion-col text-left col-2>
         อื่นๆ
@@ -118,14 +114,14 @@
         {{otherScore.scorePercent | number:'1.2-2'}} %
       </ion-col>
       <!-- <ion-col col-3>
-        <ion-select [(ngModel)]="gaming">
-          <ion-option value="nes">NES</ion-option>
-          <ion-option value="n64">Nintendo64</ion-option>
-          <ion-option value="ps">PlayStation</ion-option>
-          <ion-option value="genesis">Sega Genesis</ion-option>
-          <ion-option value="saturn">Sega Saturn</ion-option>
-          <ion-option value="snes">SNES</ion-option>
-        </ion-select>
+        <ion-select [(ngModel)]=" gaming">
+      <ion-option value="nes">NES</ion-option>
+      <ion-option value="n64">Nintendo64</ion-option>
+      <ion-option value="ps">PlayStation</ion-option>
+      <ion-option value="genesis">Sega Genesis</ion-option>
+      <ion-option value="saturn">Sega Saturn</ion-option>
+      <ion-option value="snes">SNES</ion-option>
+      </ion-select>
       </ion-col> -->
     </ion-row>
 
