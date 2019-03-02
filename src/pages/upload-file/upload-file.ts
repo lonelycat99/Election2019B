@@ -31,13 +31,17 @@ export class UploadFilePage {
     //http://localhost:5000/api/ElectionV3/UploadFile
     // https://electionvars.azurewebsites.net/api/ElectionV3/UploadFile
     // GlobalVaraible.host + "UploadFile"
+    console.log("1");
     this.http.post(GlobalVaraible.host + "UploadFile", this.formData).subscribe(data => {
+      console.log("2");
       const confirm = this.alertController.create({
         title: 'อัปโหลดคะแนนสำเร็จ',
         buttons: [
           {
             text: 'OK',
-            handler: () => { }
+            handler: () => {
+              console.log("done");
+            }
           }
         ]
       });
