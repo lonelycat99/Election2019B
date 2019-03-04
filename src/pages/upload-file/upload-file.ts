@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { GlobalVaraible } from '../../app/model';
 
@@ -20,7 +20,7 @@ export class UploadFilePage {
   formData: FormData;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient,
-    public alertController: AlertController) {
+    public alertController: AlertController, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -32,6 +32,13 @@ export class UploadFilePage {
     // https://electionvars.azurewebsites.net/api/ElectionV3/UploadFile
     // GlobalVaraible.host + "UploadFile"
     console.log("1");
+    const loader = this.loadingCtrl.create({
+      content: 'Please wait...',
+      duration: 120000,
+      dismissOnPageChange: true
+    })
+    loader.present();
+
     this.http.post(GlobalVaraible.host + "UploadFile", this.formData).subscribe(data => {
       console.log("2");
       const confirm = this.alertController.create({
@@ -40,7 +47,9 @@ export class UploadFilePage {
           {
             text: 'OK',
             handler: () => {
+              loader.present();
               console.log("done");
+
             }
           }
         ]
