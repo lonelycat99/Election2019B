@@ -34,7 +34,7 @@ export class UploadFilePage {
     console.log("1");
     const loader = this.loadingCtrl.create({
       content: 'Please wait...',
-      duration: 120000,
+      duration: 300000,
       dismissOnPageChange: true
     })
     loader.present();
@@ -47,7 +47,7 @@ export class UploadFilePage {
           {
             text: 'OK',
             handler: () => {
-              loader.present();
+              loader.dismiss();
               console.log("done");
 
             }

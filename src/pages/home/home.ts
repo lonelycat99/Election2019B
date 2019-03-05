@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { PartyScore, GlobalVaraible, ScoreOther } from '../../app/model';
 
@@ -21,7 +21,7 @@ export class HomePage {
   selectOptions: { title: string; subTitle: string; mode: string; };
   filter: string;
 
-  constructor(public navCtrl: NavController, public http: HttpClient, public alertController: AlertController) {
+  constructor(public navCtrl: NavController, public http: HttpClient, public alertController: AlertController, public loadingCtrl: LoadingController) {
     // this.selectOptions = {
     //   title: 'Pizza Toppings',
     //   subTitle: 'Select your toppings',
@@ -113,6 +113,12 @@ export class HomePage {
 
   SendResultScore() {
     console.log("1");
+    const loader = this.loadingCtrl.create({
+      content: 'Please wait...',
+      duration: 300000,
+      dismissOnPageChange: true
+    })
+    loader.present();
     this.http.post(GlobalVaraible.host + "UpdateTable2", null)
       .subscribe(data => {
         console.log("2");
@@ -124,7 +130,10 @@ export class HomePage {
               buttons: [
                 {
                   text: 'OK',
-                  handler: () => { }
+                  handler: () => {
+                    loader.dismiss();
+                    console.log("done");
+                  }
                 }
               ]
             });
