@@ -27,13 +27,22 @@ export class UploadFilePage {
     console.log('ionViewDidLoad UploadFilePage');
   }
 
+  // async presentLoading() {
+  //   const loading = await this.loadingCtrl.create({
+  //     content: 'Please wait...',
+  //     duration: 300000,
+  //     dismissOnPageChange: true
+  //   });
+  //   await loading.present();
+  // }
+
   onSubmit() {
     //http://localhost:5000/api/ElectionV3/UploadFile
     // https://electionvars.azurewebsites.net/api/ElectionV3/UploadFile
     // GlobalVaraible.host + "UploadFile"
     console.log("1");
     const loader = this.loadingCtrl.create({
-      content: 'Please wait...',
+      content: 'กรุณารอสักครู่ กำลังอัปโหลดข้อมูล...',
       duration: 300000,
       dismissOnPageChange: true
     })
@@ -49,7 +58,6 @@ export class UploadFilePage {
             handler: () => {
               loader.dismiss();
               console.log("done");
-
             }
           }
         ]

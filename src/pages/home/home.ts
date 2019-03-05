@@ -114,7 +114,7 @@ export class HomePage {
   SendResultScore() {
     console.log("1");
     const loader = this.loadingCtrl.create({
-      content: 'Please wait...',
+      content: 'กรุณารอสักครู่ กำลังส่งข้อมูล...',
       duration: 300000,
       dismissOnPageChange: true
     })
