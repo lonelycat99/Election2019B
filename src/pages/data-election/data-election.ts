@@ -24,9 +24,6 @@ export class DataElectionPage {
   }
 
   ionViewDidEnter() {
-    // "https://electionvars.azurewebsites.net/api/ElectionV3/GetAllAreaMaxScore"
-    // "http://localhost:5000/api/ElectionV3/GetScoreMyParty"
-    // GlobalVaraible.host + "GetScoreMyParty"
     this.http.get<GetScoreParty[]>(GlobalVaraible.host + "GetMaxScoreAndMyScore")
       .subscribe(data => {
         this.listMyParty = data;

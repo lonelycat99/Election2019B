@@ -74,7 +74,7 @@ export class GetScoreParty {
 }
 
 export class ScoreOther {
-    score: number;
+    haveScore: number;
     scoreArea: number;
     scorePartyList: number;
     scorePercent: number;
