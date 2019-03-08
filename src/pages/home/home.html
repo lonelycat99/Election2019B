@@ -104,22 +104,22 @@
       </ion-col>
     </ion-row>
 
-    <ion-row class="bgTabalcol2 bgTabalcolxx" *ngIf="otherScore.status && filter == 'all' ">
+    <ion-row class="bgTabalcol2 bgTabalcolxx">
       <ion-col col-1></ion-col>
       <ion-col text-left col-2>
         อื่นๆ
       </ion-col>
       <ion-col text-center col-2>
-        {{otherScore.score}}
+        {{otherScore2.haveScore}}
       </ion-col>
       <ion-col text-center col-2>
-        {{otherScore.scoreArea}}
+        {{otherScore2.scoreArea}}
       </ion-col>
       <ion-col text-center col-1>
-        {{otherScore.scorePartyList}}
+        {{otherScore2.scorePartyList}}
       </ion-col>
       <ion-col text-center col-1>
-        {{otherScore.scorePercent | number:'1.2-2'}} %
+        {{otherScore2.scorePercent | number:'1.2-2'}} %
       </ion-col>
       <!-- <ion-col col-3>
         <ion-select [(ngModel)]=" gaming">

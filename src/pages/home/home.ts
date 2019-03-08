@@ -15,11 +15,15 @@ export class HomePage {
   listShowScore: PartyScore[] = [];
   listScoreOther: PartyScore[] = [];
   otherScore: ScoreOther = new ScoreOther;
+  otherScore2: ScoreOther = new ScoreOther;;
   checkShowMoreParty: boolean = false
   // listfilter: PartyScore[];
   alliesData: string[];
   selectOptions: { title: string; subTitle: string; mode: string; };
   filter: string;
+
+  listScoreTest: PartyScore[];
+  listScoreTest2: PartyScore[];
 
   constructor(public navCtrl: NavController, public http: HttpClient, public alertController: AlertController, public loadingCtrl: LoadingController) {
     // this.selectOptions = {
@@ -28,8 +32,8 @@ export class HomePage {
     //   mode: 'md'
     // };
     // GetAllStatusAllies
-
   }
+
   ionViewDidEnter() {
     this.filter = "all";
     this.http.get<string[]>(GlobalVaraible.host + "GetAllStatusAllies")
@@ -38,9 +42,6 @@ export class HomePage {
         console.log("xxx");
         console.log(this.alliesData);
       });
-
-    // "http://localhost:5000/api/ElectionV3/UploadFile"
-    // GlobalVaraible.host + "GetAllPartyScore"
     this.listShowScore = [];
     this.listScoreAll = [];
     this.listScoreWithStatusAllies = [];
@@ -51,14 +52,33 @@ export class HomePage {
         this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
           .subscribe(data => {
             this.listScoreAll = data;
-            // this.listfilter = this.listScoreAll;
-            this.listScoreAll.forEach(data => {
+            this.listScoreTest = this.listScoreAll.filter(it => it.idParty == "034" || it.idParty == "077" || it.idParty == "001"
+              || it.idParty == "192" || it.idParty == "177" || it.idParty == "063"
+              || it.idParty == "055" || it.idParty == "145" || it.idParty == "181"
+              || it.idParty == "149" || it.idParty == "176" || it.idParty == "187");
+            this.listScoreTest.forEach(data => {
               data.isChecked = true;
               this.listScore.push(data);
             });
             this.listShowScore = this.listScore;
-            this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
-            console.log(this.listScore);
+            console.log("TestEiEi");
+            console.log(this.listScoreTest);
+
+            this.listScoreTest2 = this.listScoreAll.filter(it => it.idParty != "034" && it.idParty != "077" && it.idParty != "001"
+              && it.idParty != "192" && it.idParty != "177" && it.idParty != "063"
+              && it.idParty != "055" && it.idParty != "145" && it.idParty != "181"
+              && it.idParty != "149" && it.idParty != "176" && it.idParty != "187");
+
+            console.log("TestEiEi2");
+            console.log(this.listScoreTest2);
+            this.otherScore = { haveScore: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
+            this.listScoreTest2.forEach(data => {
+              this.otherScore.haveScore += data.haveScore;
+              this.otherScore.scoreArea += data.areaScore;
+              this.otherScore.scorePartyList += data.nameListScore;
+              this.otherScore.scorePercent += data.percentScore;
+            });
+            console.log(this.otherScore);
           });
         // this.listfilter = this.listScoreAll;
       });
@@ -97,13 +117,15 @@ export class HomePage {
   checkFilter() {
     this.listShowScore = this.listScore.filter(it => it.isChecked);
     this.listScoreOther = this.listScore.filter(it => !it.isChecked);
+    // this.otherScore2 = new ScoreOther;
+    //this.otherScore2 = this.otherScore;
     if (this.listScoreOther != []) {
-      this.otherScore = { score: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
+      this.otherScore2 = { haveScore: this.otherScore.haveScore, scoreArea: this.otherScore.scoreArea, scorePartyList: this.otherScore.scorePartyList, scorePercent: this.otherScore.scorePercent, isChecked: true, status: true };
       this.listScoreOther.forEach(data => {
-        this.otherScore.score += data.haveScore;
-        this.otherScore.scoreArea += data.areaScore;
-        this.otherScore.scorePartyList += data.nameListScore;
-        this.otherScore.scorePercent += data.percentScore;
+        this.otherScore2.haveScore += data.haveScore;
+        this.otherScore2.scoreArea += data.areaScore;
+        this.otherScore2.scorePartyList += data.nameListScore;
+        this.otherScore2.scorePercent += data.percentScore;
       });
     }
     else {
