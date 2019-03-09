@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, LoadingController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { ScoreArea, otherScore, GetScoreParty, GlobalVaraible, TextTag } from '../../app/model';
 import { EditscorePage } from '../editscore/editscore';
@@ -22,7 +22,7 @@ export class DataElectionDetailPage {
   getTag: TextTag = new TextTag;
   @ViewChild('barCanvas') barCanvas;
   xxx: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController, public alertController: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController, public alertController: AlertController, public loadingCtrl: LoadingController) {
     this.idArea = this.navParams.get('_idArea');
     this.nameArea = this.navParams.get('_nameArea');
     console.log(this.idArea);
@@ -147,6 +147,12 @@ export class DataElectionDetailPage {
 
   sendtag() {
     // https://electionvars.azurewebsites.net/api/ElectionV3/SetTags/
+    const loader = this.loadingCtrl.create({
+      content: 'กรุณารอสักครู่ กำลังตั้งค่า Tag...',
+      duration: 300000,
+      dismissOnPageChange: true
+    })
+    loader.present();
     this.http.post(GlobalVaraible.host + "SetTags/" + this.idArea, this.getTag)
       .subscribe(data => {
         const confirm = this.alertController.create({
@@ -154,7 +160,9 @@ export class DataElectionDetailPage {
           buttons: [
             {
               text: 'OK',
-              handler: () => { }
+              handler: () => {
+                loader.dismiss();
+              }
             }
           ]
         });
