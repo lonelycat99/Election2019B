@@ -19,6 +19,7 @@ export class HomePage {
   checkShowMoreParty: boolean = false
   // listfilter: PartyScore[];
   alliesData: string[];
+  alliesData2: string[];
   selectOptions: { title: string; subTitle: string; mode: string; };
   filter: string;
 
@@ -39,8 +40,8 @@ export class HomePage {
     this.http.get<string[]>(GlobalVaraible.host + "GetAllStatusAllies")
       .subscribe(data => {
         this.alliesData = data;
-        console.log("xxx");
-        console.log(this.alliesData);
+        this.alliesData2 = this.alliesData.filter(it => it != null);
+        console.log(this.alliesData2);
       });
     this.listShowScore = [];
     this.listScoreAll = [];
@@ -78,6 +79,7 @@ export class HomePage {
               this.otherScore.scorePartyList += data.nameListScore;
               this.otherScore.scorePercent += data.percentScore;
             });
+            this.otherScore2 = this.otherScore;
             console.log(this.otherScore);
           });
         // this.listfilter = this.listScoreAll;
