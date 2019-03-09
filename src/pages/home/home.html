@@ -35,7 +35,7 @@
           <ion-label>พรรคที่ต้องการค้นหา</ion-label>
           <ion-select [(ngModel)]="filter" (ionChange)="goFilter()">
             <ion-option value="all">ทั้งหมด</ion-option>
-            <ion-option *ngFor="let filters of alliesData" value="{{filters}}">{{filters}}</ion-option>
+            <ion-option *ngFor="let filters of alliesData2" value="{{filters}}">{{filters}}</ion-option>
           </ion-select>
         </ion-row>
       </ion-col>
