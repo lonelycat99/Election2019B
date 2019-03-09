@@ -40,7 +40,7 @@ export class HomePage {
     this.http.get<string[]>(GlobalVaraible.host + "GetAllStatusAllies")
       .subscribe(data => {
         this.alliesData = data;
-        this.alliesData2 = this.alliesData.filter(it => it != null);
+        this.alliesData2 = this.alliesData.filter(it => it != "");
         console.log(this.alliesData2);
       });
     this.listShowScore = [];

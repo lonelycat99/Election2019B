@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { ScoreArea, GlobalVaraible } from '../../app/model';
 
@@ -19,7 +19,8 @@ export class EditscorePage {
   getScoreParty: ScoreArea = new ScoreArea;
   newScore: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public viewCtrl: ViewController
+    , public loadingCtrl: LoadingController) {
 
     // https://electionvars.azurewebsites.net/api/ElectionV3/Edititem/Edititem?id=
   }
@@ -29,13 +30,16 @@ export class EditscorePage {
     console.log(this.getScoreParty);
   }
   submit() {
-    // "https://electionvars.azurewebsites.net/api/ElectionV3/GetAllAreaMaxScore"
-    // "http://localhost:5000/api/ElectionV3/EditScore/"
-    // GlobalVaraible.host + "EditScore/"
+    const loader = this.loadingCtrl.create({
+      content: 'กรุณารอสักครู่ กำลังตั้งค่าคะแนนใหม่...',
+      duration: 300000,
+      dismissOnPageChange: true
+    })
+    loader.present();
     this.http.post(GlobalVaraible.host + "EditScore/" + this.newScore, this.getScoreParty)
       .subscribe(data => {
+        loader.dismiss();
         this.viewCtrl.dismiss(data);
       });
-
   }
 }
