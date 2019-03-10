@@ -39,6 +39,7 @@ export class FormatCalculateDetailPage {
   }
 
   ionViewDidEnter() {
+    this.listScorePoll = [];
     this.listScorePollOther = [];
     this.listScorePoll2 = [];
     this.http.get<ScorePoll[]>(GlobalVaraible.host + "GetAreaScorePoll/" + this.idArea)
