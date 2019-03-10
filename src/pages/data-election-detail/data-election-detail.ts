@@ -46,7 +46,7 @@ export class DataElectionDetailPage {
         function getRandomColorHex(index) {
           for (let i = 0; i < xxx.length; i++) {
             var color = "";
-            if (xxx[index].nameInitial == "อ.น.ค.") {
+            if (xxx[index].nameInitial == "อนค.") {
               color = "#FF7F00"
             } else if (xxx[index].nameInitial == "ภท.") {
               color = "#00008B"
@@ -64,7 +64,7 @@ export class DataElectionDetailPage {
               color = "#0000FF"
             } else if (xxx[index].nameInitial == "ชทพ.") {
               color = "#FF69B4"
-            } else if (xxx[index].nameInitial == "พช.") {
+            } else if (xxx[index].nameInitial == "พ.พ.ช.") {
               color = "#CD0000"
             } else if (xxx[index].nameInitial == "ปชช.") {
               color = "#FFFF00"
