@@ -43,7 +43,7 @@ export class UploadFilePage {
     console.log("1");
     const loader = this.loadingCtrl.create({
       content: 'กรุณารอสักครู่ กำลังอัปโหลดข้อมูล...',
-      duration: 600000,
+      duration: 1200000,
       dismissOnPageChange: true
     })
     loader.present();
