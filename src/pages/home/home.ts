@@ -139,7 +139,7 @@ export class HomePage {
     console.log("1");
     const loader = this.loadingCtrl.create({
       content: 'กรุณารอสักครู่ กำลังส่งข้อมูล...',
-      duration: 300000,
+      duration: 1500000,
       dismissOnPageChange: true
     })
     loader.present();
