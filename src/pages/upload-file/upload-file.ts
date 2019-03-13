@@ -40,29 +40,31 @@ export class UploadFilePage {
     //http://localhost:5000/api/ElectionV3/UploadFile
     // https://electionvars.azurewebsites.net/api/ElectionV3/UploadFile
     // GlobalVaraible.host + "UploadFile"
-    console.log("1");
+    console.log("1.onSubmit");
     const loader = this.loadingCtrl.create({
       content: 'กรุณารอสักครู่ กำลังอัปโหลดข้อมูล...',
-      duration: 1200000,
+      duration: 1500000,
       dismissOnPageChange: true
     })
     loader.present();
 
     this.http.post(GlobalVaraible.host + "UploadFile", this.formData).subscribe(data => {
-      console.log("2");
-      const confirm = this.alertController.create({
-        title: 'อัปโหลดคะแนนสำเร็จ',
-        buttons: [
-          {
-            text: 'OK',
-            handler: () => {
-              loader.dismiss();
-              console.log("done");
+      console.log("2.Upload File Done");
+      this.http.post(GlobalVaraible.host + "UpdateTable4", null).subscribe(data => {
+        const confirm = this.alertController.create({
+          title: 'อัปโหลดคะแนนสำเร็จ',
+          buttons: [
+            {
+              text: 'OK',
+              handler: () => {
+                loader.dismiss();
+                console.log("3.Update Table4 Done");
+              }
             }
-          }
-        ]
+          ]
+        });
+        confirm.present();
       });
-      confirm.present();
     });
   }
 
