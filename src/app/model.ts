@@ -90,5 +90,4 @@ export class TextTag {
 export class GlobalVaraible {
     //static host: string = "http://localhost:5000/api/ElectionV3/";
     static host: string = "https://electionvars.azurewebsites.net/api/ElectionV3/";
-
 }
