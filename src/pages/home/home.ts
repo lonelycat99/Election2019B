@@ -48,42 +48,39 @@ export class HomePage {
     this.listScoreWithStatusAllies = [];
     // this.listfilter = [];
     this.listScore = [];
-    this.http.post(GlobalVaraible.host + "UpdatePartyScore", null)
+    this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
       .subscribe(data => {
-        this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
-          .subscribe(data => {
-            this.listScoreAll = data;
-            this.listScoreTest = this.listScoreAll.filter(it => it.idParty == "034" || it.idParty == "077" || it.idParty == "001"
-              || it.idParty == "192" || it.idParty == "177" || it.idParty == "063"
-              || it.idParty == "055" || it.idParty == "145" || it.idParty == "181"
-              || it.idParty == "149" || it.idParty == "176" || it.idParty == "187");
-            this.listScoreTest.forEach(data => {
-              data.isChecked = true;
-              this.listScore.push(data);
-            });
-            this.listShowScore = this.listScore;
-            console.log("TestEiEi");
-            console.log(this.listScoreTest);
+        this.listScoreAll = data;
+        this.listScoreTest = this.listScoreAll.filter(it => it.idParty == "034" || it.idParty == "077" || it.idParty == "001"
+          || it.idParty == "192" || it.idParty == "177" || it.idParty == "063"
+          || it.idParty == "055" || it.idParty == "145" || it.idParty == "181"
+          || it.idParty == "149" || it.idParty == "176" || it.idParty == "187");
+        this.listScoreTest.forEach(data => {
+          data.isChecked = true;
+          this.listScore.push(data);
+        });
+        this.listShowScore = this.listScore;
+        console.log("TestEiEi");
+        console.log(this.listScoreTest);
 
-            this.listScoreTest2 = this.listScoreAll.filter(it => it.idParty != "034" && it.idParty != "077" && it.idParty != "001"
-              && it.idParty != "192" && it.idParty != "177" && it.idParty != "063"
-              && it.idParty != "055" && it.idParty != "145" && it.idParty != "181"
-              && it.idParty != "149" && it.idParty != "176" && it.idParty != "187");
+        this.listScoreTest2 = this.listScoreAll.filter(it => it.idParty != "034" && it.idParty != "077" && it.idParty != "001"
+          && it.idParty != "192" && it.idParty != "177" && it.idParty != "063"
+          && it.idParty != "055" && it.idParty != "145" && it.idParty != "181"
+          && it.idParty != "149" && it.idParty != "176" && it.idParty != "187");
 
-            console.log("TestEiEi2");
-            console.log(this.listScoreTest2);
-            this.otherScore = { haveScore: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
-            this.listScoreTest2.forEach(data => {
-              this.otherScore.haveScore += data.haveScore;
-              this.otherScore.scoreArea += data.areaScore;
-              this.otherScore.scorePartyList += data.nameListScore;
-              this.otherScore.scorePercent += data.percentScore;
-            });
-            this.otherScore2 = this.otherScore;
-            console.log(this.otherScore);
-          });
-        // this.listfilter = this.listScoreAll;
+        console.log("TestEiEi2");
+        console.log(this.listScoreTest2);
+        this.otherScore = { haveScore: 0, scoreArea: 0, scorePartyList: 0, scorePercent: 0, isChecked: true, status: true };
+        this.listScoreTest2.forEach(data => {
+          this.otherScore.haveScore += data.haveScore;
+          this.otherScore.scoreArea += data.areaScore;
+          this.otherScore.scorePartyList += data.nameListScore;
+          this.otherScore.scorePercent += data.percentScore;
+        });
+        this.otherScore2 = this.otherScore;
+        console.log(this.otherScore);
       });
+    // this.listfilter = this.listScoreAll;
   }
 
   setStatusAlly(scorePartymodel: PartyScore) {

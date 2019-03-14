@@ -38,8 +38,12 @@ export class EditscorePage {
     loader.present();
     this.http.post(GlobalVaraible.host + "EditScore/" + this.newScore, this.getScoreParty)
       .subscribe(data => {
-        loader.dismiss();
-        this.viewCtrl.dismiss(data);
+        console.log("1.edit done");
+        this.http.post(GlobalVaraible.host + "UpdatePartyScore", null).subscribe(data => {
+          console.log("2.update score Party done");
+          loader.dismiss();
+          this.viewCtrl.dismiss(data);
+        });
       });
   }
 }
