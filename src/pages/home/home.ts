@@ -50,6 +50,8 @@ export class HomePage {
     this.listScore = [];
     this.http.get<PartyScore[]>(GlobalVaraible.host + "GetAllPartyScore")
       .subscribe(data => {
+        console.log("3/14/2019 11:47");
+        console.log("Get all Party Score Update");  
         this.listScoreAll = data;
         this.listScoreTest = this.listScoreAll.filter(it => it.idParty == "034" || it.idParty == "077" || it.idParty == "001"
           || it.idParty == "192" || it.idParty == "177" || it.idParty == "063"
