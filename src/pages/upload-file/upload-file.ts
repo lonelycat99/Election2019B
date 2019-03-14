@@ -47,23 +47,25 @@ export class UploadFilePage {
       dismissOnPageChange: true
     })
     loader.present();
-
     this.http.post(GlobalVaraible.host + "UploadFile", this.formData).subscribe(data => {
       console.log("2.Upload File Done");
       this.http.post(GlobalVaraible.host + "UpdateTable4", null).subscribe(data => {
-        const confirm = this.alertController.create({
-          title: 'อัปโหลดคะแนนสำเร็จ',
-          buttons: [
-            {
-              text: 'OK',
-              handler: () => {
-                loader.dismiss();
-                console.log("3.Update Table4 Done");
+        console.log("3.Update Table4 Done");
+        this.http.post(GlobalVaraible.host + "UpdatePartyScore", null).subscribe(data => {
+          console.log("4.Update Score Part Done");
+          const confirm = this.alertController.create({
+            title: 'อัปโหลดคะแนนสำเร็จ',
+            buttons: [
+              {
+                text: 'OK',
+                handler: () => {
+                  loader.dismiss();
+                }
               }
-            }
-          ]
+            ]
+          });
+          confirm.present();
         });
-        confirm.present();
       });
     });
   }
