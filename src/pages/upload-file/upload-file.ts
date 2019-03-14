@@ -37,9 +37,6 @@ export class UploadFilePage {
   // }
 
   onSubmit() {
-    //http://localhost:5000/api/ElectionV3/UploadFile
-    // https://electionvars.azurewebsites.net/api/ElectionV3/UploadFile
-    // GlobalVaraible.host + "UploadFile"
     console.log("1.onSubmit");
     const loader = this.loadingCtrl.create({
       content: 'กรุณารอสักครู่ กำลังอัปโหลดข้อมูล...',
