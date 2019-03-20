@@ -37,6 +37,7 @@ export class UploadFilePage {
   // }
 
   onSubmit() {
+
     console.log("1.onSubmit");
     const loader = this.loadingCtrl.create({
       content: 'กรุณารอสักครู่ กำลังอัปโหลดข้อมูล...',
@@ -44,27 +45,47 @@ export class UploadFilePage {
       dismissOnPageChange: true
     })
     loader.present();
+
     this.http.post(GlobalVaraible.host + "UploadFile", this.formData).subscribe(data => {
       console.log("2.Upload File Done");
       this.http.post(GlobalVaraible.host + "UpdateTable4", null).subscribe(data => {
         console.log("3.Update Table4 Done");
-        this.http.post(GlobalVaraible.host + "UpdatePartyScore", null).subscribe(data => {
-          console.log("4.Update Score Part Done");
-          const confirm = this.alertController.create({
-            title: 'อัปโหลดคะแนนสำเร็จ',
-            buttons: [
-              {
-                text: 'OK',
-                handler: () => {
-                  loader.dismiss();
-                }
-              }
-            ]
+        this.http.post(GlobalVaraible.host + "FillDataIntoTable4_1", null).subscribe(data => {
+          console.log("4.FillDataIntoTable4_1 Done");
+          this.http.post(GlobalVaraible.host + "FillDataIntoTable4_2", null).subscribe(data => {
+            console.log("4.FillDataIntoTable4_2 Done");
+            this.http.post(GlobalVaraible.host + "UpdatePartyScore", null).subscribe(data => {
+              console.log("6.Update Score Part Done");
+              const confirm = this.alertController.create({
+                title: 'อัปโหลดคะแนนสำเร็จ',
+                buttons: [
+                  {
+                    text: 'OK',
+                    handler: () => {
+                      loader.dismiss();
+                    }
+                  }
+                ]
+              });
+              confirm.present();
+            }, err => {
+              console.log("Error UpdatePartyScore");
+              console.log(err);
+            });
+          }, err => {
+            console.log("Error FillDataIntoTable4_2");
+            console.log(err);
           });
-          confirm.present();
+        }, err => {
+          console.log("Error FillDataIntoTable4_1");
+          console.log(err);
         });
+      }, err => {
+        console.log("Error UpdateTable4");
+        console.log(err);
       });
     });
+    
   }
 
   setFile(event) {
